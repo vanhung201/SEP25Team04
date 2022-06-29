@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-sacle=1, maximun-scale=1">
+    <title>WS25 Admin</title>
+    <link rel="shortcut icon" type="image/png" href="img/logo.png">
+    <link rel = "stylesheet" href = "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <div class="logo">
+            <a th:href="@{index}"><img src="img/logo.png" width="130px" alt=""></a>
+        </div>
+
+    </div>
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a th:href="@{index}" /><span class="las la-igloo"></span>
+                <span>Danh Mục</span></a>
+            </li>
+
+            <li>
+                <a th:href="@{miennam}" /><span class="las la-clipboard-list"></span>
+                <span>Xổ Số Miền Nam</span></a>
+            </li>
+
+            <li>
+                <a th:href="@{mienbac}" /><span class="las la-clipboard-list"></span>
+                <span>Xổ Số Miền Bắc</span></a>
+            </li>
+
+            <li>
+                <a th:href="@{mientrung}" /><span class="las la-clipboard-list"></span>
+                <span>Xổ Số Miền Trung</span></a>
+            </li>
+            <li>
+                <a th:href="@{account}" /><span class="las la-users"></span>
+                <span>Tài Khoản</span></a>
+            </li>
+            <li>
+                <a th:href="@{gtxs}" class="active" /><span class="las la-clipboard-list"></span>
+                <span>Cơ cấu giải thưởng</span></a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+            Dashboard
+        </h2>
+        <div class="search-wrapper">
+            <span class="las la-search"></span>
+            <input type="search" placeholder="Search here"/>
+        </div>
+        <div class="user-wrapper">
+            <img src="img/2.jpg"  width="30px" height="30px" alt="">
+            <div>
+                <h4>Flames</h4>
+                <small>Super Admin</small>
+                <h5><a th:href="@{login}">Đăng Xuất</a></h5>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="cards1">
+            <div class="card-single">
+                <div>
+                    <h1>CƠ CẤU GIẢI THƯỞNG XỔ SỐ</h1>
+                </div>
+                <div>
+                    <span class="las la-clipboard-list"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="recent-grid">
+            <div class="projects">
+                <div class="card">
+
+
+
+                    <div>
+                        <form action="" method="post" name="mienuutien" id="mienuutien">
+                            <table align="center" cellspacing="0" cellpadding="0">
+                            </table>
+                            <div style="text-align: center ; font-size: 30px; color: red;">CƠ CẤU GIẢI THƯỞNG</div>
+                            <div style="text-align: center; font-size: 15px; color :black">(Cho 1.000.000 vé loại 10.000đ , 06 chữ số)</div>
+                            <div style="text-align: center; font-size: 15px; color :orange">Áp dụng chung tính từ ngày 01-01-2017</div>
+                            <div>
+                                <table class="settextsx" width="100%" border="3px">
+                                    <thead>
+                                    <tr>
+
+                                        <td width = "9%" style="color: red;">01</td>
+                                        <td width = "25%" style="color: red;">Giải đặc biệt</td>
+                                        <td width = "25%" style="color: red;">( 6 số )</td>
+                                        <td width = "25%" style="color: red;">2.0000.0000.000đ</td>
+                                        <div class="card-header">
+                                            <div></div>
+                                            <button class="detail" ><a href="editmiennam.html">Chỉnh sửa</a></button>
+
+                                        </div>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+
+                                        <td>01</td>
+                                        <td>Giải nhất</td>
+                                        <td>( 5 số )</td>
+                                        <td>30.000.000đ</td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>01</td>
+                                        <td>Giải hai</td>
+                                        <td>( 5 số )</td>
+                                        <td>15.000.000đ</td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>02</td>
+                                        <td>Giải ba</td>
+                                        <td>( 5 số )</td>
+                                        <td>10.000.000đ</td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>07</td>
+                                        <td>Giải bốn</td>
+                                        <td>( 5 số )</td>
+                                        <td>3.000.000đ</td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>10</td>
+                                        <td>Giải năm</td>
+                                        <td>( 4 số )</td>
+                                        <td>1.000.000đ</td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>30</td>
+                                        <td>Giải sáu</td>
+                                        <td>( 4 số )</td>
+                                        <td>400.000đ</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>100</td>
+                                        <td>Giải bảy</td>
+                                        <td>( 3 số )</td>
+                                        <td>200.000đ</td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>1.000</td>
+                                        <td>Giải tám</td>
+                                        <td>( 2 số )</td>
+                                        <td>100.000đ</td>
+
+                                    </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </main>
+</div>
+
+
+
+</body>
+</html>

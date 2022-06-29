@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-sacle=1, maximun-scale=1" />
+    <title>WS25 Admin</title>
+    <link rel="shortcut icon" type="image/png" href="img/logo.png" >
+    <link rel = "stylesheet" href = "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
+
+</head>
+<body>
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <div class="logo">
+            <a th:href="@{index}" /><img th:src="@{img/logo.png}" width="130px" alt="" /></a>
+        </div>
+
+    </div>
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a th:href="@{index}"  class="active" /><span class="las la-igloo"></span>
+                    <span>Danh Mục</span></a>
+            </li>
+
+            <li>
+                <a th:href="@{miennam}" /><span class="las la-clipboard-list"></span>
+                    <span>Xổ Số Miền Nam</span></a>
+            </li>
+
+            <li>
+                <a th:href="@{mienbac}" /><span class="las la-clipboard-list"></span>
+                    <span>Xổ Số Miền Bắc</span></a>
+            </li>
+
+            <li>
+                <a th:href="@{mientrung}" /><span class="las la-clipboard-list"></span>
+                    <span>Xổ Số Miền Trung</span></a>
+            </li>
+            <li>
+                <a th:href="@{account}" /><span class="las la-users"></span>
+                    <span>Tài Khoản</span></a>
+            </li>
+            <li>
+                <a th:href="@{gtxs}" /><span class="las la-clipboard-list"></span>
+                    <span>Cơ cấu giải thưởng</span></a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+            Dashboard
+        </h2>
+        <div class="search-wrapper">
+            <span class="las la-search"></span>
+            <input type="search" placeholder="Search here"/>
+        </div>
+        <div class="user-wrapper">
+            <img src="img/2.jpg"  width="30px" height="30px" alt="">
+            <div>
+                <h4>Flames</h4>
+                <small>Super Admin</small>
+                <h5><a th:href="@{login}">Đăng Xuất</a></h5>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="cards">
+
+            <div>
+                <div class="card-single">
+                    <div>
+                        <h1>Xổ Số Miền Nam</h1>
+                    </div>
+                    <div class="card-header-seeall">
+
+                        <button>
+                            <a th:href="@{miennam}">Xem tất cả!!</a>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="settextsx" width="100%" border="3px">
+                            <thead>
+                            <tr>
+
+                                <td width = "9%">Giải</td>
+                                <td width = "25%">Flamer</td>
+                                <td width = "25%">Minh Ngọc</td>
+                                <td width = "25%">Đại Phát</td>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr>
+
+                                <td>Tám</td>
+                                <td>80</td>
+                                <td>80</td>
+                                <td>80</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Bảy</td>
+                                <td>832</td>
+                                <td>832</td>
+                                <td>832</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Sáu</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+                            </tr>
+                            <tr>
+
+                                <td>Năm</td>
+                                <td>8155</td>
+                                <td>8155</td>
+                                <td>8155</td>
+                            </tr>
+                            <tr>
+
+                                <td>Tư</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cards">
+
+            <div>
+                <div class="card-single">
+                    <div>
+                        <h1>Xổ Số Miền Bắc</h1>
+                    </div>
+                    <div class="card-header-seeall">
+                        <button>
+                            <a th:href="@{/mienbac}">Xem tất cả!!</a>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="settextsx" width="100%" border="3px">
+                            <thead>
+                            <tr>
+
+                                <td width = "9%">Giải</td>
+                                <td width = "25%">Flamer</td>
+                                <td width = "25%">Minh Ngọc</td>
+                                <td width = "25%">Đại Phát</td>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr>
+
+                                <td>Bảy</td>
+                                <td>15&emsp;52&emsp;48&emsp;36</td>
+                                <td>832</td>
+                                <td>832</td>
+                            </tr>
+                            <tr>
+
+                                <td>Sáu</td>
+                                <td>099&emsp;210&emsp;654</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Năm</td>
+                                <td>2163&emsp;9481&emsp;4488&emsp;6890&emsp;1187&emsp;2392</td>
+                                <td>8155</td>
+                                <td>8155</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Tư</td>
+                                <td>3529&emsp;3496&emsp;6826&emsp;7625</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Ba</td>
+                                <td>27923&emsp;65013&emsp;34637&emsp;04904&emsp;14101&emsp;69438</td>
+                                <td>46733&emsp;64590</td>
+                                <td>46733&emsp;64590</td>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="cards">
+
+            <div>
+                <div class="card-single">
+                    <div>
+                        <h1>Xổ Số Miền Trung</h1>
+                    </div>
+                    <div class="card-header-seeall">
+                        <button>
+                            <a th:href="@{/mientrung}">Xem tất cả!!</a>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="settextsx" width="100%" border="3px">
+                            <thead>
+                            <tr>
+
+                                <td width = "9%">Giải</td>
+                                <td width = "25%">Flamer</td>
+                                <td width = "25%">Minh Ngọc</td>
+                                <td width = "25%">Đại Phát</td>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr>
+
+                                <td>Bảy</td>
+                                <td>15&emsp;52&emsp;48&emsp;36</td>
+                                <td>832</td>
+                                <td>832</td>
+                            </tr>
+                            <tr>
+
+                                <td>Sáu</td>
+                                <td>099&emsp;210&emsp;654</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+                                <td>5552&emsp;9972&emsp;7947</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Năm</td>
+                                <td>2163&emsp;9481&emsp;4488&emsp;6890&emsp;1187&emsp;2392</td>
+                                <td>8155</td>
+                                <td>8155</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Tư</td>
+                                <td>3529&emsp;3496&emsp;6826&emsp;7625</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>Ba</td>
+                                <td>27923&emsp;65013&emsp;34637&emsp;04904&emsp;14101&emsp;69438</td>
+                                <td>46733&emsp;64590</td>
+                                <td>46733&emsp;64590</td>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </main>
+</div>
+
+</body>
+</body>
+
