@@ -1,13 +1,12 @@
 package com.SEPTeam04.Admin.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "ADMIN_ACCOUNT")
+@Table(name = "ADMIN_ACCOUNT", indexes = {
+        @Index(name = "UK_ADMIN_ACCOUNT", columnList = "UserName", unique = true)
+})
 public class AdminAccount {
     @Id
     @Column(name = "Id", nullable = false)
@@ -16,7 +15,7 @@ public class AdminAccount {
     @Column(name = "UserName", length = 25)
     private String userName;
 
-    @Column(name = "Password", length = 25)
+    @Column(name = "Password", length = 128)
     private String password;
 
     @Column(name = "HoVaTen", length = 30)
@@ -27,6 +26,9 @@ public class AdminAccount {
 
     @Column(name = "TrangThaiTaiKhoan")
     private Boolean trangThaiTaiKhoan;
+
+    @Column(name = "Role", length = 25)
+    private String role;
 
     public Integer getId() {
         return id;
@@ -74,6 +76,14 @@ public class AdminAccount {
 
     public void setTrangThaiTaiKhoan(Boolean trangThaiTaiKhoan) {
         this.trangThaiTaiKhoan = trangThaiTaiKhoan;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }
