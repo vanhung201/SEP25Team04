@@ -12,7 +12,7 @@ public class Mien {
     @Column(name = "Id", nullable = false)
     private Integer id;
 
-    @Column(name = "TenMien", length = 20)
+    @Column(name = "TenMien", length = 50)
     private String tenMien;
 
     public Integer getId() {

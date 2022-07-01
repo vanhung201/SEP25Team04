@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" />
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-sacle=1, maximun-scale=1" />
     <title>WS25 Admin</title>
-    <link rel="shortcut icon" type="image/png" href="img/logo.png" >
-    <link rel = "stylesheet" href = "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" >
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-
-
 </head>
+
 <body>
 <input type="checkbox" id="nav-toggle">
 <div class="sidebar">
     <div class="sidebar-brand">
         <div class="logo">
-            <a th:href="@{index}" /><img th:src="@{img/logo.png}" width="130px" alt="" /></a>
+            <a th:href="@{/index}" /><img th:src="@{/img/logo.png}" width="130px" alt="logo" /></a>
         </div>
 
     </div>
     <div class="sidebar-menu">
         <ul>
             <li>
-                <a th:href="@{index}"  class="active" /><span class="las la-igloo"></span>
+                <a th:href="@{/index}"  class="active" /><span class="las la-igloo"></span>
                     <span>Danh Mục</span></a>
             </li>
 
@@ -65,11 +64,10 @@
             <input type="search" placeholder="Search here"/>
         </div>
         <div class="user-wrapper">
-            <img src="img/2.jpg"  width="30px" height="30px" alt="">
+            <img th:src="@{/img/account.png}"  width="30px" height="30px" alt="account_logo">
             <div>
-                <h4>Flames</h4>
-                <small>Super Admin</small>
-                <h5><a th:href="@{login}">Đăng Xuất</a></h5>
+                <h3>[[${#httpServletRequest.remoteUser}]]</h3>
+                <h5 style="margin-top: 5px"><a th:href="@{/logout}" style="color: red">Logout</a></h5>
             </div>
         </div>
     </header>
@@ -301,5 +299,5 @@
 </div>
 
 </body>
-</body>
+</html>
 
