@@ -1,33 +1,30 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "ADMIN_ACCOUNT", indexes = {
-        @Index(name = "UK_ADMIN_ACCOUNT", columnList = "UserName", unique = true)
+        @Index(name = "UK_ADMIN_ACCOUNT", columnList = "username", unique = true)
 })
 public class AdminAccount {
     @Id
-    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "UserName", length = 25)
-    private String userName;
+    @Column(name = "username", length = 25)
+    private String username;
 
-    @Column(name = "Password", length = 128)
+    @Column(name = "password", length = 128)
     private String password;
 
-    @Column(name = "HoVaTen", length = 30)
-    private String hoVaTen;
+    @Column(name = "hovaten", length = 30)
+    private String hovaten;
 
-    @Column(name = "NgayTaoTaiKhoan")
-    private LocalDate ngayTaoTaiKhoan;
+    @Column(name = "trangthaitaikhoan")
+    private Boolean trangthaitaikhoan;
 
-    @Column(name = "TrangThaiTaiKhoan")
-    private Boolean trangThaiTaiKhoan;
-
-    @Column(name = "Role", length = 25)
+    @Column(name = "role", length = 25)
     private String role;
 
     public Integer getId() {
@@ -38,12 +35,12 @@ public class AdminAccount {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -54,28 +51,20 @@ public class AdminAccount {
         this.password = password;
     }
 
-    public String getHoVaTen() {
-        return hoVaTen;
+    public String getHovaten() {
+        return hovaten;
     }
 
-    public void setHoVaTen(String hoVaTen) {
-        this.hoVaTen = hoVaTen;
+    public void setHovaten(String hovaten) {
+        this.hovaten = hovaten;
     }
 
-    public LocalDate getNgayTaoTaiKhoan() {
-        return ngayTaoTaiKhoan;
+    public Boolean getTrangthaitaikhoan() {
+        return trangthaitaikhoan;
     }
 
-    public void setNgayTaoTaiKhoan(LocalDate ngayTaoTaiKhoan) {
-        this.ngayTaoTaiKhoan = ngayTaoTaiKhoan;
-    }
-
-    public Boolean getTrangThaiTaiKhoan() {
-        return trangThaiTaiKhoan;
-    }
-
-    public void setTrangThaiTaiKhoan(Boolean trangThaiTaiKhoan) {
-        this.trangThaiTaiKhoan = trangThaiTaiKhoan;
+    public void setTrangthaitaikhoan(Boolean trangthaitaikhoan) {
+        this.trangthaitaikhoan = trangthaitaikhoan;
     }
 
     public String getRole() {
