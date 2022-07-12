@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-sacle=1, maximun-scale=1">
-    <title>Admin Account</title>
+    <title>Admin Form</title>
     <link rel="shortcut icon" type="image/png" th:href="@{img/logo.png}">
-    <link rel = "stylesheet" href = "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href = "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}" />
 </head>
 <html>
-
 <input type="checkbox" id="nav-toggle">
 <div class="sidebar">
     <div class="sidebar-brand">
         <div class="logo">
-            <a th:href="@{index}"><img src="img/logo.png" width="130px" alt=""></a>
+            <a th:href="@{index}"><img th:src="@{img/logo.png}" width="130px" alt="logo"></a>
         </div>
 
     </div>
@@ -84,46 +83,38 @@
                     <span class="las la-users"></span>
                 </div>
             </div>
-
         </div>
-                    <a class="h3 m-2" style="text-align: center" th:href="@{/account/new}">Add new User</a>
-                    <div th:if="${message}" class="alert-success text-center">
-                        [[${message}]]
-                    </div>
-                    <table id="customers">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>UserName</th>
-                            <th>Action</th>
+        <form th:action="@{/account/save}" method="post" th:object="${account}">
+            <input type="hidden" th:filed="*{id}">
+            <div class="container">
+                <h1>[[${pageTitle}]]</h1>
 
-                        </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each = "admin : ${listAdmins}">
-                                    <td th:text = "${admin.id}"></td>
-                                    <td th:text = "${admin.hovaten}"></td>
-                                    <td th:text = "${admin.username}"></td>
+                <hr>
 
+                <label for="hoVaTen"><b>Name</b></label>
+                <input type="text" th:field="*{hovaten}" placeholder="Enter Name" name="hoVaTen" id="hoVaTen" required>
 
-                                    <td>
-                                        <a class="h4 mr-3" th:href="@{'/account/edit/' + ${admin.id}}">Edit</a>
-                                        <p><a class="h4 mr-3" th:href="@{'/account/delete/' + ${admin.id}}">Delete</a></p>
-                                    </td>
+                <label for="userName"><b>User Name</b></label>
+                <input type="text" th:field="*{username}" placeholder="Enter User Name" name="userName" id="userName" required>
 
+                <label for="password"><b>Password</b></label>
+                <input type="password" th:field="*{password}" placeholder="Enter Password" name="password" id="password" required>
+                <hr>
 
-
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
+                <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
                 </div>
-
             </div>
 
-        </div>
+        </form>
+
+        <script type="text/javascript">
+            function cancelForm(){
+                window.location ="/account";
+            }
+        </script>
+
 </main>
 </div>
 

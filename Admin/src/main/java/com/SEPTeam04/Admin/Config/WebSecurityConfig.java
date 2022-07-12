@@ -22,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         authenticationManagerBuilder.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(new BCryptPasswordEncoder())
-                .usersByUsernameQuery("SELECT UserName, Password, TrangThaiTaiKhoan FROM ADMIN_ACCOUNT WHERE UserName=?")
-                .authoritiesByUsernameQuery("SELECT UserName, Role FROM ADMIN_ACCOUNT WHERE UserName=?");
+                .usersByUsernameQuery("SELECT username, password, trangthaitaikhoan FROM ADMIN_ACCOUNT WHERE username=?")
+                .authoritiesByUsernameQuery("SELECT username, role FROM ADMIN_ACCOUNT WHERE UserName=?");
     }
 
     @Override
@@ -33,17 +33,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .permitAll()
-                    .loginPage("/login")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .loginProcessingUrl("/login")
-                    .defaultSuccessUrl("/index")
+                .permitAll()
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/index")
                 .and()
                 .logout()
-                    .permitAll()
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/login")
-                    .and().csrf().disable();
+                .deleteCookies("remember-me")
+                .permitAll()
+                .logoutUrl("/logout")
+                .and()
+                .rememberMe()
+                .and()
+                .csrf().disable();
     }
+
 }
