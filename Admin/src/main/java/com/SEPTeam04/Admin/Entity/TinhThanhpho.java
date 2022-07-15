@@ -1,6 +1,8 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "TINH_THANHPHO")
@@ -18,6 +20,39 @@ public class TinhThanhpho {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_Mien")
     private Mien idMien;
+
+    @OneToMany(mappedBy = "idTinhthanhpho")
+    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "idTinhthanhpho")
+    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "idTinhthanhpho")
+    private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
+
+    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
+        return ketquaMinhngocs;
+    }
+
+    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
+        this.ketquaMinhngocs = ketquaMinhngocs;
+    }
+
+    public Set<Ketquadoso> getKetquadosos() {
+        return ketquadosos;
+    }
+
+    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
+        this.ketquadosos = ketquadosos;
+    }
+
+    public Set<KetquaDaiphat> getKetquaDaiphats() {
+        return ketquaDaiphats;
+    }
+
+    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
+        this.ketquaDaiphats = ketquaDaiphats;
+    }
 
     public Integer getId() {
         return id;

@@ -1,10 +1,9 @@
 package com.SEPTeam04.Admin.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "VEPHATHANH")
@@ -18,6 +17,17 @@ public class Vephathanh {
 
     @Column(name = "KyHieuVe", length = 35)
     private String kyHieuVe;
+
+    @OneToMany(mappedBy = "idVephathanh")
+    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
+
+    public Set<Ketquadoso> getKetquadosos() {
+        return ketquadosos;
+    }
+
+    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
+        this.ketquadosos = ketquadosos;
+    }
 
     public Integer getId() {
         return id;

@@ -1,9 +1,8 @@
 package com.SEPTeam04.Admin.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "GIAITHUONG")
@@ -17,6 +16,39 @@ public class Giaithuong {
 
     @Column(name = "SoTienThuong")
     private Integer soTienThuong;
+
+    @OneToMany(mappedBy = "idGiaithuong")
+    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "idGiaithuong")
+    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "idGiaithuong")
+    private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
+
+    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
+        return ketquaMinhngocs;
+    }
+
+    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
+        this.ketquaMinhngocs = ketquaMinhngocs;
+    }
+
+    public Set<Ketquadoso> getKetquadosos() {
+        return ketquadosos;
+    }
+
+    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
+        this.ketquadosos = ketquadosos;
+    }
+
+    public Set<KetquaDaiphat> getKetquaDaiphats() {
+        return ketquaDaiphats;
+    }
+
+    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
+        this.ketquaDaiphats = ketquaDaiphats;
+    }
 
     public Integer getId() {
         return id;
