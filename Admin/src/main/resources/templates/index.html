@@ -64,7 +64,7 @@
             <input type="search" placeholder="Search here"/>
         </div>
         <div class="user-wrapper">
-            <img th:src="@{/img/account.png}"  width="30px" height="30px" alt="account_logo">
+            <img th:src="@{/img/account.png}"  width="30px" height="30px" alt="account">
             <div>
                 <h3>[[${#httpServletRequest.remoteUser}]]</h3>
                 <h5 style="margin-top: 5px"><a th:href="@{/logout}" style="color: red">Logout</a></h5>
