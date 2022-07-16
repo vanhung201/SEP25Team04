@@ -8,11 +8,12 @@ import java.util.Set;
 @Table(name = "MIEN")
 public class Mien {
     @Id
-    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "TenMien", length = 50)
-    private String tenMien;
+    @Column(name = "tenmien", length = 50)
+    private String tenmien;
 
     @OneToMany(mappedBy = "idMien")
     private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
@@ -26,28 +27,20 @@ public class Mien {
     @OneToMany(mappedBy = "idMien")
     private Set<TinhThanhpho> tinhThanhphos = new LinkedHashSet<>();
 
-    public Set<TinhThanhpho> getTinhThanhphos() {
-        return tinhThanhphos;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTinhThanhphos(Set<TinhThanhpho> tinhThanhphos) {
-        this.tinhThanhphos = tinhThanhphos;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
-        return ketquaMinhngocs;
+    public String getTenmien() {
+        return tenmien;
     }
 
-    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
-        this.ketquaMinhngocs = ketquaMinhngocs;
-    }
-
-    public Set<Ketquadoso> getKetquadosos() {
-        return ketquadosos;
-    }
-
-    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
-        this.ketquadosos = ketquadosos;
+    public void setTenmien(String tenmien) {
+        this.tenmien = tenmien;
     }
 
     public Set<KetquaDaiphat> getKetquaDaiphats() {
@@ -58,20 +51,28 @@ public class Mien {
         this.ketquaDaiphats = ketquaDaiphats;
     }
 
-    public Integer getId() {
-        return id;
+    public Set<Ketquadoso> getKetquadosos() {
+        return ketquadosos;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
+        this.ketquadosos = ketquadosos;
     }
 
-    public String getTenMien() {
-        return tenMien;
+    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
+        return ketquaMinhngocs;
     }
 
-    public void setTenMien(String tenMien) {
-        this.tenMien = tenMien;
+    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
+        this.ketquaMinhngocs = ketquaMinhngocs;
+    }
+
+    public Set<TinhThanhpho> getTinhThanhphos() {
+        return tinhThanhphos;
+    }
+
+    public void setTinhThanhphos(Set<TinhThanhpho> tinhThanhphos) {
+        this.tinhThanhphos = tinhThanhphos;
     }
 
 }

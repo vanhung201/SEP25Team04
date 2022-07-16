@@ -76,18 +76,18 @@
         <div style="color: #cb854c;" class="cards1">
                 <h1>CREATE NEW ADMIN ACCOUNT</h1>
         </div>
-        <form th:action="@{/account/saveAdminAccount}" method="POST" th:object="${account}">
+        <form th:action="@{/account/saveAdminAccount}" action="#" method="POST" th:object="${account}">
             <div class="container">
 
-                <label for="hoVaTen"><b>Full Name</b></label>
-                <input type="text" th:field="*{hovaten}" placeholder="Enter your Full Name" name="hoVaTen" id="hoVaTen"
+                <label th:for="hovaten"><b>Full Name</b></label>
+                <input type="text" th:field="*{hovaten}" placeholder="Enter your Full Name" name="hovaten" id="hovaten"
                        required>
 
-                <label for="userName"><b>User Name</b></label>
-                <input type="text" th:field="*{username}" placeholder="Enter User Name" name="userName" id="userName"
+                <label th:for="username"><b>User Name</b></label>
+                <input type="text" th:field="*{username}" placeholder="Enter User Name" name="username" id="username"
                        required>
 
-                <label for="password"><b>Password</b></label>
+                <label th:for="password"><b>Password</b></label>
                 <input type="password" th:field="*{password}" placeholder="Enter Password" name="password" id="password"
                        required>
 
