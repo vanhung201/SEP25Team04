@@ -6,26 +6,27 @@ import javax.persistence.*;
 @Table(name = "KETQUADOSO")
 public class Ketquadoso {
     @Id
-    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "SoTrungThuong", length = 6)
-    private String soTrungThuong;
+    @Column(name = "sotrungthuong", length = 6)
+    private String sotrungthuong;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_VePhatHanh")
+    @JoinColumn(name = "id_vephathanh")
     private Vephathanh idVephathanh;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_Mien")
+    @JoinColumn(name = "id_mien")
     private Mien idMien;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_TinhThanhPho")
+    @JoinColumn(name = "id_tinhthanhpho")
     private TinhThanhpho idTinhthanhpho;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_GiaiThuong")
+    @JoinColumn(name = "id_giaithuong")
     private Giaithuong idGiaithuong;
 
     public Integer getId() {
@@ -36,12 +37,12 @@ public class Ketquadoso {
         this.id = id;
     }
 
-    public String getSoTrungThuong() {
-        return soTrungThuong;
+    public String getSotrungthuong() {
+        return sotrungthuong;
     }
 
-    public void setSoTrungThuong(String soTrungThuong) {
-        this.soTrungThuong = soTrungThuong;
+    public void setSotrungthuong(String sotrungthuong) {
+        this.sotrungthuong = sotrungthuong;
     }
 
     public Vephathanh getIdVephathanh() {

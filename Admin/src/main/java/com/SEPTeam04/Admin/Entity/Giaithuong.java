@@ -8,14 +8,15 @@ import java.util.Set;
 @Table(name = "GIAITHUONG")
 public class Giaithuong {
     @Id
-    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "TenGiaiThuong", length = 20)
-    private String tenGiaiThuong;
+    @Column(name = "tengiaithuong", length = 20)
+    private String tengiaithuong;
 
-    @Column(name = "SoTienThuong")
-    private Integer soTienThuong;
+    @Column(name = "sotienthuong")
+    private Integer sotienthuong;
 
     @OneToMany(mappedBy = "idGiaithuong")
     private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
@@ -26,20 +27,28 @@ public class Giaithuong {
     @OneToMany(mappedBy = "idGiaithuong")
     private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
 
-    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
-        return ketquaMinhngocs;
+    public Integer getId() {
+        return id;
     }
 
-    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
-        this.ketquaMinhngocs = ketquaMinhngocs;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Set<Ketquadoso> getKetquadosos() {
-        return ketquadosos;
+    public String getTengiaithuong() {
+        return tengiaithuong;
     }
 
-    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
-        this.ketquadosos = ketquadosos;
+    public void setTengiaithuong(String tengiaithuong) {
+        this.tengiaithuong = tengiaithuong;
+    }
+
+    public Integer getSotienthuong() {
+        return sotienthuong;
+    }
+
+    public void setSotienthuong(Integer sotienthuong) {
+        this.sotienthuong = sotienthuong;
     }
 
     public Set<KetquaDaiphat> getKetquaDaiphats() {
@@ -50,28 +59,20 @@ public class Giaithuong {
         this.ketquaDaiphats = ketquaDaiphats;
     }
 
-    public Integer getId() {
-        return id;
+    public Set<Ketquadoso> getKetquadosos() {
+        return ketquadosos;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
+        this.ketquadosos = ketquadosos;
     }
 
-    public String getTenGiaiThuong() {
-        return tenGiaiThuong;
+    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
+        return ketquaMinhngocs;
     }
 
-    public void setTenGiaiThuong(String tenGiaiThuong) {
-        this.tenGiaiThuong = tenGiaiThuong;
-    }
-
-    public Integer getSoTienThuong() {
-        return soTienThuong;
-    }
-
-    public void setSoTienThuong(Integer soTienThuong) {
-        this.soTienThuong = soTienThuong;
+    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
+        this.ketquaMinhngocs = ketquaMinhngocs;
     }
 
 }

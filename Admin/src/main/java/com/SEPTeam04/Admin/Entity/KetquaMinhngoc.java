@@ -7,29 +7,30 @@ import java.time.LocalDate;
 @Table(name = "KETQUA_MINHNGOC")
 public class KetquaMinhngoc {
     @Id
-    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_Mien")
+    @JoinColumn(name = "id_mien")
     private Mien idMien;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_TinhThanhPho")
+    @JoinColumn(name = "id_tinhthanhpho")
     private TinhThanhpho idTinhthanhpho;
 
-    @Column(name = "SoTrungThuong", length = 6)
-    private String soTrungThuong;
+    @Column(name = "sotrungthuong", length = 6)
+    private String sotrungthuong;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_GiaiThuong")
+    @JoinColumn(name = "id_giaithuong")
     private Giaithuong idGiaithuong;
 
-    @Column(name = "KyHieuVe", length = 10)
-    private String kyHieuVe;
+    @Column(name = "kyhieuve", length = 10)
+    private String kyhieuve;
 
-    @Column(name = "ThoiGianMoThuong")
-    private LocalDate thoiGianMoThuong;
+    @Column(name = "thoigianmothuong")
+    private LocalDate thoigianmothuong;
 
     public Integer getId() {
         return id;
@@ -55,12 +56,12 @@ public class KetquaMinhngoc {
         this.idTinhthanhpho = idTinhthanhpho;
     }
 
-    public String getSoTrungThuong() {
-        return soTrungThuong;
+    public String getSotrungthuong() {
+        return sotrungthuong;
     }
 
-    public void setSoTrungThuong(String soTrungThuong) {
-        this.soTrungThuong = soTrungThuong;
+    public void setSotrungthuong(String sotrungthuong) {
+        this.sotrungthuong = sotrungthuong;
     }
 
     public Giaithuong getIdGiaithuong() {
@@ -71,20 +72,20 @@ public class KetquaMinhngoc {
         this.idGiaithuong = idGiaithuong;
     }
 
-    public String getKyHieuVe() {
-        return kyHieuVe;
+    public String getKyhieuve() {
+        return kyhieuve;
     }
 
-    public void setKyHieuVe(String kyHieuVe) {
-        this.kyHieuVe = kyHieuVe;
+    public void setKyhieuve(String kyhieuve) {
+        this.kyhieuve = kyhieuve;
     }
 
-    public LocalDate getThoiGianMoThuong() {
-        return thoiGianMoThuong;
+    public LocalDate getThoigianmothuong() {
+        return thoigianmothuong;
     }
 
-    public void setThoiGianMoThuong(LocalDate thoiGianMoThuong) {
-        this.thoiGianMoThuong = thoiGianMoThuong;
+    public void setThoigianmothuong(LocalDate thoigianmothuong) {
+        this.thoigianmothuong = thoigianmothuong;
     }
 
 }

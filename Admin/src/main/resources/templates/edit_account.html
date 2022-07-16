@@ -75,8 +75,10 @@
         <div style="color: #cb854c;" class="cards1">
             <h1>EDIT ADMIN ACCOUNT</h1>
         </div>
-        <form th:action="@{/account/saveAdminAccount}" method="POST" th:object="${account}">
+        <form th:action="@{/account/saveAdminAccount}" action="#" method="POST" th:object="${account}">
             <div class="container">
+                <input type="hidden" th:field="*{id}">
+
                 <label for="hoVaTen"><b>Full Name</b></label>
                 <input type="text" th:field="*{hovaten}" placeholder="Enter your Full Name" name="hoVaTen" id="hoVaTen"
                        required>

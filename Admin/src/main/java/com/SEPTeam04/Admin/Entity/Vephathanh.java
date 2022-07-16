@@ -9,25 +9,18 @@ import java.util.Set;
 @Table(name = "VEPHATHANH")
 public class Vephathanh {
     @Id
-    @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "ThoiGianMoThuong")
-    private LocalDate thoiGianMoThuong;
+    @Column(name = "thoigianmothuong")
+    private LocalDate thoigianmothuong;
 
-    @Column(name = "KyHieuVe", length = 35)
-    private String kyHieuVe;
+    @Column(name = "kyhieuve", length = 35)
+    private String kyhieuve;
 
     @OneToMany(mappedBy = "idVephathanh")
     private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
-
-    public Set<Ketquadoso> getKetquadosos() {
-        return ketquadosos;
-    }
-
-    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
-        this.ketquadosos = ketquadosos;
-    }
 
     public Integer getId() {
         return id;
@@ -37,20 +30,28 @@ public class Vephathanh {
         this.id = id;
     }
 
-    public LocalDate getThoiGianMoThuong() {
-        return thoiGianMoThuong;
+    public LocalDate getThoigianmothuong() {
+        return thoigianmothuong;
     }
 
-    public void setThoiGianMoThuong(LocalDate thoiGianMoThuong) {
-        this.thoiGianMoThuong = thoiGianMoThuong;
+    public void setThoigianmothuong(LocalDate thoigianmothuong) {
+        this.thoigianmothuong = thoigianmothuong;
     }
 
-    public String getKyHieuVe() {
-        return kyHieuVe;
+    public String getKyhieuve() {
+        return kyhieuve;
     }
 
-    public void setKyHieuVe(String kyHieuVe) {
-        this.kyHieuVe = kyHieuVe;
+    public void setKyhieuve(String kyhieuve) {
+        this.kyhieuve = kyhieuve;
+    }
+
+    public Set<Ketquadoso> getKetquadosos() {
+        return ketquadosos;
+    }
+
+    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
+        this.ketquadosos = ketquadosos;
     }
 
 }
