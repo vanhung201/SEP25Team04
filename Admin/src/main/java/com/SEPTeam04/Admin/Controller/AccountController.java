@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.swing.*;
+
 @Controller
 public class AccountController {
 
@@ -54,6 +56,7 @@ public class AccountController {
     @GetMapping("/account/deleteAdminAccount/{id}")
     public String deleteAdminAccount(@PathVariable (value = "id") Integer id, Model model) {
         // call delete Admin Account method
+
         this.adminService.deleteAdminAccountById(id);
 
         return "redirect:/account";
