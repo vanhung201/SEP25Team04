@@ -1,6 +1,7 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "KETQUADOSO")
@@ -14,16 +15,18 @@ public class Ketquadoso {
     private String sotrungthuong;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_vephathanh")
-    private Vephathanh idVephathanh;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_mien")
     private Mien idMien;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tinhthanhpho")
     private TinhThanhpho idTinhthanhpho;
+
+    @Column(name = "kyhieuve", length = 30)
+    private String kyhieuve;
+
+    @Column(name = "thoigianmothuong")
+    private LocalDate thoigianmothuong;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_giaithuong")
@@ -45,14 +48,6 @@ public class Ketquadoso {
         this.sotrungthuong = sotrungthuong;
     }
 
-    public Vephathanh getIdVephathanh() {
-        return idVephathanh;
-    }
-
-    public void setIdVephathanh(Vephathanh idVephathanh) {
-        this.idVephathanh = idVephathanh;
-    }
-
     public Mien getIdMien() {
         return idMien;
     }
@@ -67,6 +62,22 @@ public class Ketquadoso {
 
     public void setIdTinhthanhpho(TinhThanhpho idTinhthanhpho) {
         this.idTinhthanhpho = idTinhthanhpho;
+    }
+
+    public String getKyhieuve() {
+        return kyhieuve;
+    }
+
+    public void setKyhieuve(String kyhieuve) {
+        this.kyhieuve = kyhieuve;
+    }
+
+    public LocalDate getThoigianmothuong() {
+        return thoigianmothuong;
+    }
+
+    public void setThoigianmothuong(LocalDate thoigianmothuong) {
+        this.thoigianmothuong = thoigianmothuong;
     }
 
     public Giaithuong getIdGiaithuong() {

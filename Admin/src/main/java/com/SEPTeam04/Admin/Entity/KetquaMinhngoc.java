@@ -26,7 +26,7 @@ public class KetquaMinhngoc {
     @JoinColumn(name = "id_giaithuong")
     private Giaithuong idGiaithuong;
 
-    @Column(name = "kyhieuve", length = 10)
+    @Column(name = "kyhieuve", length = 30)
     private String kyhieuve;
 
     @Column(name = "thoigianmothuong")

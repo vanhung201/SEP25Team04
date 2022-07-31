@@ -12,14 +12,14 @@ public class Mien {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "tenmien", length = 50)
+    @Column(name = "tenmien", length = 20)
     private String tenmien;
 
     @OneToMany(mappedBy = "idMien")
-    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
+    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idMien")
-    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
+    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idMien")
     private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
@@ -43,20 +43,20 @@ public class Mien {
         this.tenmien = tenmien;
     }
 
-    public Set<KetquaDaiphat> getKetquaDaiphats() {
-        return ketquaDaiphats;
-    }
-
-    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
-        this.ketquaDaiphats = ketquaDaiphats;
-    }
-
     public Set<Ketquadoso> getKetquadosos() {
         return ketquadosos;
     }
 
     public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
         this.ketquadosos = ketquadosos;
+    }
+
+    public Set<KetquaDaiphat> getKetquaDaiphats() {
+        return ketquaDaiphats;
+    }
+
+    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
+        this.ketquaDaiphats = ketquaDaiphats;
     }
 
     public Set<KetquaMinhngoc> getKetquaMinhngocs() {

@@ -1,145 +1,276 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http:/www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Account</title>
-    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}">
-    <link rel="stylesheet"
-          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
 </head>
-<html>
 
-<input type="checkbox" id="nav-toggle">
-<div class="sidebar">
-    <div class="sidebar-brand">
-        <div class="logo">
-            <a th:href="@{index}"><img th:src="@{/img/logo.png}" width="130px" alt="logo"></a>
-        </div>
+<body>
 
-    </div>
-    <div class="sidebar-menu">
-        <ul>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a th:href="@{index}" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="logo.png">
+        <span class="d-none d-lg-block">Flames</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Flames Admin</span>
+          </a><!-- End Profile Image Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
-                <a th:href="@{index}"/><span class="las la-igloo"></span>
-                <span>Danh Mục</span></a>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{change-password}">
+                <i class="bi bi-gear"></i>
+                <span>Change Password</span>
+              </a>
             </li>
 
             <li>
-                <a th:href="@{miennam}"/><span class="las la-clipboard-list"></span>
-                <span>Xổ Số Miền Nam</span></a>
+              <hr class="dropdown-divider">
             </li>
 
             <li>
-                <a th:href="@{mienbac}"/><span class="las la-clipboard-list"></span>
-                <span>Xổ Số Miền Bắc</span></a>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{logout}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
             </li>
 
-            <li>
-                <a th:href="@{mientrung}"/><span class="las la-clipboard-list"></span>
-                <span>Xổ Số Miền Trung</span></a>
-            </li>
-            <li>
-                <a th:href="@{account}" class="active"/><span class="las la-users"></span>
-                <span>Tài Khoản</span></a>
-            </li>
-            <li>
-                <a th:href="@{gtxs}"/><span class="las la-clipboard-list"></span>
-                <span>Cơ cấu giải thưởng</span></a>
-            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
 
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#lottery-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Lottery Results</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="lottery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{index}">
+              <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{xosomientrung}">
+              <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{xosomiennam}">
+              <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{xosotinhthanhpho}">
+              <i class="bi bi-circle"></i><span>Xổ số Tỉnh - Thành phố</span>
+            </a>
+          </li>
         </ul>
+      </li><!-- End Lottery Results Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{prize}">
+          <i class="bi bi-gem"></i>
+          <span>Prizes</span>
+        </a>
+      </li><!-- End Prizes Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-person"></i><span>Account</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="account-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{account}" class="active">
+              <i class="bi bi-circle"></i><span>Account List</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{change-password}">
+              <i class="bi bi-circle"></i><span>Change Password</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Accounts Nav -->
+    </ul>
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Danh sách Tài khoản Admin</h1>
+    </div><!-- End Page Title -->
+
+    <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="bi bi-check-circle me-1"></i>
+      [[${message}]]
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-</div>
 
-<div class="main-content">
-    <header>
-        <h2>
-            <label for="nav-toggle">
-                <span class="las la-bars"></span>
-            </label>
-            Dashboard
-        </h2>
-        <div class="search-wrapper">
-            <span class="las la-search"></span>
-            <input type="search" placeholder="Search here"/>
-        </div>
-        <div class="user-wrapper">
-            <img th:src="@{/img/account.png}" width="30px" height="30px" alt="account">
-            <div>
-                <h3>[[${#httpServletRequest.remoteUser}]]</h3>
-                <h5 style="margin-top: 5px"><a th:href="@{/logout}" style="color: red">Logout</a></h5>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="cards1">
-            <div class="card-single">
-                <div>
-                    <h1>5</h1>
-                    <span>Admin</span>
-                </div>
-                <div>
-                    <span class="las la-users"></span>
-                </div>
+    <section class="section">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+
+            <div class="card-header">
+              <a class="btn btn-success" th:href="@{addAccount}" >Add New</a>
             </div>
 
+            <div class="card-body">
+
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="admin : ${listAdmins}">
+                    <th scope="row" th:text="${admin.id}" />
+                    <td th:text="${admin.username}" />
+                    <td th:text="${admin.hovaten}" />
+                    <td th:text="${admin.trangthaitaikhoan}"/>
+                    <td>
+                        <a type="button" class="btn btn-warning btn-sm"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                           th:href="@{/editAccount/{id}(id=${admin.id})}"><i class="bi bi-pencil-square"></i></a>
+                        &nbsp;
+                        <a type="button" class="btn btn-danger btn-sm"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"
+                           th:data-id="${admin.id}"
+                           th:data-username="${admin.username}"
+                           onclick="showConfirmDelete(this.getAttribute('data-id'), this.getAttribute('data-username'))"><i class="bi bi bi-x-circle"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div style=" margin-top: 20px; margin-bottom: 20px">
-            <a style="color: #155724;
-                               background-color: #d4edda;
-                               border-color: #c3e6cb;
-                               padding: 0.75rem 1.25rem;
-                               border: 1px solid transparent;
-                               border-radius: 0.25rem;
-                               font-size: 16px;" th:href="@{/account/newAdminAccount}">Add Admin User</a>
+    <script>
+      function showConfirmDelete(id, username) {
+        $('#username').text(username);
+        $('#yesOption').attr('href', 'deleteAccount/' + id);
+        $('#confirmDeleteModal').modal('show');
+      }
+    </script>
+
+    <!-- Basic Modal -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete Confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure to delete user "<span id="username" style="color: red"></span>"?
+          </div>
+          <div class="modal-footer">
+            <a id="yesOption" type="button" class="btn btn-danger">Yes</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          </div>
         </div>
+      </div>
+    </div><!-- End Basic Modal-->
 
-        <table id="customers">
-            <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>User Name</th>
-                <th>Action</th>
-            </tr>
+  </main><!-- End #main -->
 
-            <tr th:each="admin : ${listAdmins}">
-                <td th:text="${admin.id}"></td>
-                <td th:text="${admin.hovaten}"></td>
-                <td th:text="${admin.username}"></td>
-                <td>
-                    <a style="color: #918b18;
-                       background-color: #f6ce56;
-                       border-color: #f6ce56;
-                       padding: 0.5rem 1rem;
-                       border: 1px solid transparent;
-                       border-radius: 0.25rem;
-                       font-size: 12px;
-                       margin-top: 20px;
-                       margin-bottom: 20px;
-                       margin-left: 15px;
-                       margin-right: 15px;" class="h4 mr-3"
-                       th:href="@{/account/editAdminAccount/{id}(id=${admin.id})}">Edit</a>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Flames</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="#">Flames</a>
+    </div>
+  </footer><!-- End Footer -->
 
-                    <a style="color: #721c24;
-                       background-color: #f8d7da;
-                       border-color: #f5c6cb;
-                       padding: 0.5rem 1rem;
-                       border: 1px solid transparent;
-                       border-radius: 0.25rem;
-                       font-size: 12px;
-                       margin-top: 20px;
-                       margin-bottom: 20px;
-                       margin-left: 10px;
-                       margin-right: 15px;" class="h4 mr-3"
-                       th:href="@{/account/deleteAdminAccount/{id}(id=${admin.id})}" >Delete</a>
-                </td>
-            </tr>
-        </table>
-    </main>
-</div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
+
 </html>

@@ -19,10 +19,10 @@ public class Giaithuong {
     private Integer sotienthuong;
 
     @OneToMany(mappedBy = "idGiaithuong")
-    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
+    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idGiaithuong")
-    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
+    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idGiaithuong")
     private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
@@ -51,20 +51,20 @@ public class Giaithuong {
         this.sotienthuong = sotienthuong;
     }
 
-    public Set<KetquaDaiphat> getKetquaDaiphats() {
-        return ketquaDaiphats;
-    }
-
-    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
-        this.ketquaDaiphats = ketquaDaiphats;
-    }
-
     public Set<Ketquadoso> getKetquadosos() {
         return ketquadosos;
     }
 
     public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
         this.ketquadosos = ketquadosos;
+    }
+
+    public Set<KetquaDaiphat> getKetquaDaiphats() {
+        return ketquaDaiphats;
+    }
+
+    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
+        this.ketquaDaiphats = ketquaDaiphats;
     }
 
     public Set<KetquaMinhngoc> getKetquaMinhngocs() {

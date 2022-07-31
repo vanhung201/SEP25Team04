@@ -3,9 +3,7 @@ package com.SEPTeam04.Admin.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ADMIN_ACCOUNT", indexes = {
-        @Index(name = "UK_ADMIN_ACCOUNT", columnList = "username", unique = true)
-})
+@Table(name = "ADMIN_ACCOUNT")
 public class AdminAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +22,7 @@ public class AdminAccount {
     @Column(name = "trangthaitaikhoan")
     private Boolean trangthaitaikhoan;
 
-    @Column(name = "role", length = 25)
+    @Column(name = "role", length = 10)
     private String role;
 
     public Integer getId() {
