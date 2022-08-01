@@ -1,303 +1,200 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-sacle=1, maximun-scale=1" />
-    <title>WS25 Admin</title>
-    <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" >
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
 </head>
 
 <body>
-<input type="checkbox" id="nav-toggle">
-<div class="sidebar">
-    <div class="sidebar-brand">
-        <div class="logo">
-            <a th:href="@{/index}" /><img th:src="@{/img/logo.png}" width="130px" alt="logo" /></a>
-        </div>
 
-    </div>
-    <div class="sidebar-menu">
-        <ul>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a th:href="@{index}" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="logo.png">
+        <span class="d-none d-lg-block">Flames</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Flames Admin</span>
+          </a><!-- End Profile Image Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
-                <a th:href="@{/index}"  class="active" /><span class="las la-igloo"></span>
-                    <span>Danh Mục</span></a>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{change-password}">
+                <i class="bi bi-gear"></i>
+                <span>Change Password</span>
+              </a>
             </li>
 
             <li>
-                <a th:href="@{miennam}" /><span class="las la-clipboard-list"></span>
-                    <span>Xổ Số Miền Nam</span></a>
+              <hr class="dropdown-divider">
             </li>
 
             <li>
-                <a th:href="@{mienbac}" /><span class="las la-clipboard-list"></span>
-                    <span>Xổ Số Miền Bắc</span></a>
+              <a class="dropdown-item d-flex align-items-center" th:href="@{logout}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
             </li>
 
-            <li>
-                <a th:href="@{mientrung}" /><span class="las la-clipboard-list"></span>
-                    <span>Xổ Số Miền Trung</span></a>
-            </li>
-            <li>
-                <a th:href="@{account}" /><span class="las la-users"></span>
-                    <span>Tài Khoản</span></a>
-            </li>
-            <li>
-                <a th:href="@{gtxs}" /><span class="las la-clipboard-list"></span>
-                    <span>Cơ cấu giải thưởng</span></a>
-            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
 
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#lottery-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Lottery Results</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="lottery-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{index}" class="active">
+              <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{xosomientrung}">
+              <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{xosomiennam}">
+              <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{xosotinhthanhpho}">
+              <i class="bi bi-circle"></i><span>Xổ số Tỉnh - Thành phố</span>
+            </a>
+          </li>
         </ul>
+      </li><!-- End Lottery Results Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{prize}">
+          <i class="bi bi-gem"></i>
+          <span>Prizes</span>
+        </a>
+      </li><!-- End Prizes Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-person"></i><span>Account</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{account}">
+              <i class="bi bi-circle"></i><span>Account List</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{change-password}">
+              <i class="bi bi-circle"></i><span>Change Password</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Accounts Nav -->
+    </ul>
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Kết quả Xổ số Miền Bắc</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+            
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Flames</span></strong>. All Rights Reserved
     </div>
-</div>
-<div class="main-content">
-    <header>
-        <h2>
-            <label for="nav-toggle">
-                <span class="las la-bars"></span>
-            </label>
-            Dashboard
-        </h2>
-        <div class="search-wrapper">
-            <span class="las la-search"></span>
-            <input type="search" placeholder="Search here"/>
-        </div>
-        <div class="user-wrapper">
-            <img th:src="@{/img/account.png}"  width="30px" height="30px" alt="account">
-            <div>
-                <h3>[[${#httpServletRequest.remoteUser}]]</h3>
-                <h5 style="margin-top: 5px"><a th:href="@{/logout}" style="color: red">Logout</a></h5>
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="cards">
+    <div class="credits">
+      Designed by <a href="#">Flames</a>
+    </div>
+  </footer><!-- End Footer -->
 
-            <div>
-                <div class="card-single">
-                    <div>
-                        <h1>Xổ Số Miền Nam</h1>
-                    </div>
-                    <div class="card-header-seeall">
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-                        <button>
-                            <a th:href="@{miennam}">Xem tất cả!!</a>
-                        </button>
-                    </div>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-                </div>
-
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="settextsx" width="100%" border="3px">
-                            <thead>
-                            <tr>
-
-                                <td width = "9%">Giải</td>
-                                <td width = "25%">Flamer</td>
-                                <td width = "25%">Minh Ngọc</td>
-                                <td width = "25%">Đại Phát</td>
-                            </tr>
-                            </thead>
-                            <tbody >
-                            <tr>
-
-                                <td>Tám</td>
-                                <td>80</td>
-                                <td>80</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Bảy</td>
-                                <td>832</td>
-                                <td>832</td>
-                                <td>832</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Sáu</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-                            </tr>
-                            <tr>
-
-                                <td>Năm</td>
-                                <td>8155</td>
-                                <td>8155</td>
-                                <td>8155</td>
-                            </tr>
-                            <tr>
-
-                                <td>Tư</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="cards">
-
-            <div>
-                <div class="card-single">
-                    <div>
-                        <h1>Xổ Số Miền Bắc</h1>
-                    </div>
-                    <div class="card-header-seeall">
-                        <button>
-                            <a th:href="@{/mienbac}">Xem tất cả!!</a>
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="settextsx" width="100%" border="3px">
-                            <thead>
-                            <tr>
-
-                                <td width = "9%">Giải</td>
-                                <td width = "25%">Flamer</td>
-                                <td width = "25%">Minh Ngọc</td>
-                                <td width = "25%">Đại Phát</td>
-                            </tr>
-                            </thead>
-                            <tbody >
-                            <tr>
-
-                                <td>Bảy</td>
-                                <td>15&emsp;52&emsp;48&emsp;36</td>
-                                <td>832</td>
-                                <td>832</td>
-                            </tr>
-                            <tr>
-
-                                <td>Sáu</td>
-                                <td>099&emsp;210&emsp;654</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Năm</td>
-                                <td>2163&emsp;9481&emsp;4488&emsp;6890&emsp;1187&emsp;2392</td>
-                                <td>8155</td>
-                                <td>8155</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Tư</td>
-                                <td>3529&emsp;3496&emsp;6826&emsp;7625</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Ba</td>
-                                <td>27923&emsp;65013&emsp;34637&emsp;04904&emsp;14101&emsp;69438</td>
-                                <td>46733&emsp;64590</td>
-                                <td>46733&emsp;64590</td>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="cards">
-
-            <div>
-                <div class="card-single">
-                    <div>
-                        <h1>Xổ Số Miền Trung</h1>
-                    </div>
-                    <div class="card-header-seeall">
-                        <button>
-                            <a th:href="@{/mientrung}">Xem tất cả!!</a>
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="settextsx" width="100%" border="3px">
-                            <thead>
-                            <tr>
-
-                                <td width = "9%">Giải</td>
-                                <td width = "25%">Flamer</td>
-                                <td width = "25%">Minh Ngọc</td>
-                                <td width = "25%">Đại Phát</td>
-                            </tr>
-                            </thead>
-                            <tbody >
-                            <tr>
-
-                                <td>Bảy</td>
-                                <td>15&emsp;52&emsp;48&emsp;36</td>
-                                <td>832</td>
-                                <td>832</td>
-                            </tr>
-                            <tr>
-
-                                <td>Sáu</td>
-                                <td>099&emsp;210&emsp;654</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-                                <td>5552&emsp;9972&emsp;7947</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Năm</td>
-                                <td>2163&emsp;9481&emsp;4488&emsp;6890&emsp;1187&emsp;2392</td>
-                                <td>8155</td>
-                                <td>8155</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Tư</td>
-                                <td>3529&emsp;3496&emsp;6826&emsp;7625</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-                                <td>26201&emsp;46914&emsp;83578&emsp;93794&emsp;26879&emsp;98116&emsp;16871</td>
-
-                            </tr>
-                            <tr>
-
-                                <td>Ba</td>
-                                <td>27923&emsp;65013&emsp;34637&emsp;04904&emsp;14101&emsp;69438</td>
-                                <td>46733&emsp;64590</td>
-                                <td>46733&emsp;64590</td>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-    </main>
-</div>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
-</html>
 
+</html>
