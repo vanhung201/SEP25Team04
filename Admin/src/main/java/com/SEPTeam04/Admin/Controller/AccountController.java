@@ -1,10 +1,12 @@
 package com.SEPTeam04.Admin.Controller;
 
 import com.SEPTeam04.Admin.Entity.AdminAccount;
+import com.SEPTeam04.Admin.Repository.AdminRepository;
 import com.SEPTeam04.Admin.Service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +35,7 @@ public class AccountController {
         return "/add-account";
     }
 
-    @PostMapping("saveAccount")
+    @PostMapping("/saveAccount")
     public String saveAdminAccount(@ModelAttribute("account") AdminAccount adminAccount, RedirectAttributes attributes) {
         // save admin account to database
         adminService.saveAdminAccount(adminAccount);
@@ -60,5 +62,11 @@ public class AccountController {
         attributes.addFlashAttribute("message", "Delete account successfully.");
 
         return "redirect:/account";
+    }
+
+    @GetMapping("/change-password")
+    public String showChangePassword(Model model) {
+
+        return "/change-password";
     }
 }

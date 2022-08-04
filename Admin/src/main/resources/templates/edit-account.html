@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin Dashboard</title>
+  <title>Admin Dashboard - Edit Account</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,7 +37,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
-    <a th:href="@{index}" class="logo d-flex align-items-center">
+    <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
       <img src="assets/img/logo.png" alt="logo.png">
       <span class="d-none d-lg-block">Flames</span>
     </a>
@@ -69,7 +69,7 @@
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li>
-            <a class="dropdown-item d-flex align-items-center" th:href="@{change-password}">
+            <a class="dropdown-item d-flex align-items-center" th:href="@{/change-password}">
               <i class="bi bi-gear"></i>
               <span>Change Password</span>
             </a>
@@ -80,7 +80,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" th:href="@{logout}">
+            <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
               <i class="bi bi-box-arrow-right"></i>
               <span>Sign Out</span>
             </a>
@@ -105,22 +105,22 @@
       </a>
       <ul id="lottery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a th:href="@{index}">
+          <a th:href="@{/xosomienbac}">
             <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
           </a>
         </li>
         <li>
-          <a th:href="@{xosomientrung}">
+          <a th:href="@{/xosomientrung}">
             <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
           </a>
         </li>
         <li>
-          <a th:href="@{xosomiennam}">
+          <a th:href="@{/xosomiennam}">
             <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
           </a>
         </li>
         <li>
-          <a th:href="@{xosotinhthanhpho}">
+          <a th:href="@{/xosotinhthanhpho}">
             <i class="bi bi-circle"></i><span>Xổ số Tỉnh - Thành phố</span>
           </a>
         </li>
@@ -128,7 +128,7 @@
     </li><!-- End Lottery Results Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" th:href="@{prize}">
+      <a class="nav-link collapsed" th:href="@{/prize}">
         <i class="bi bi-gem"></i>
         <span>Prizes</span>
       </a>
@@ -140,12 +140,12 @@
       </a>
       <ul id="account-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
         <li>
-          <a th:href="@{account}" class="active">
+          <a th:href="@{/account}" class="active">
             <i class="bi bi-circle"></i><span>Account List</span>
           </a>
         </li>
         <li>
-          <a th:href="@{change-password}">
+          <a th:href="@{/change-password}">
             <i class="bi bi-circle"></i><span>Change Password</span>
           </a>
         </li>
@@ -167,7 +167,7 @@
           <h5 class="card"></h5>
           <div class="card-body">
 
-            <form class="row g-3 needs-validation" action="#" th:action="@{saveAccount}" method="POST" th:object="${account}" novalidate>
+            <form class="row g-3 needs-validation" action="#" th:action="@{/saveAccount}" method="POST" th:object="${account}" novalidate>
 
               <input type="hidden" th:field="*{id}">
 
@@ -244,6 +244,9 @@
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+
+<!-- Jquery JS Files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login</title>
+  <title>Admin - Login</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,7 +42,7 @@
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a th:href="@{login}" class="logo d-flex align-items-center w-auto">
+                <a th:href="@{/login}" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="logo">
                   <span class="d-none d-lg-block">Flames</span>
                 </a>
@@ -56,7 +56,23 @@
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                   </div>
 
-                  <form class="row g-3 needs-validation" th:action="@{login}" method="POST" novalidate>
+                  <div th:if="${param.logout}" class="pt-2">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <i class="bi bi-check-circle me-1"></i>
+                      You have been logged out.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+
+                  <div th:if="${param.error}" class="pt-2">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <i class="bi bi-x-circle"></i>
+                      Invalid Username or Password.
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+
+                  <form class="row g-3 needs-validation" th:action="@{/login}" method="POST" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
@@ -114,6 +130,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Jquery JS Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 

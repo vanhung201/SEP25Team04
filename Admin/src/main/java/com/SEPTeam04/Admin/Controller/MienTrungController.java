@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MienTrungController {
-    @GetMapping("/mientrung")
-    public String showMienTrung(Model model){
-        return "mientrung";
+
+    @GetMapping("/xosomientrung")
+    public String showMienTrung(Model model) {
+
+        return "/xosomientrung";
     }
 }

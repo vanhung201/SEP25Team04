@@ -5,11 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MienNamController {
+public class TinhThanhPhoController {
 
-    @GetMapping("/xosomiennam")
-    public String showMiennam(Model model) {
+    @GetMapping("/xosotinhthanhpho")
+    public String showTinhThanhPho(Model model) {
 
-        return "/xosomiennam";
+        return "/xosotinhthanhpho";
     }
 }
