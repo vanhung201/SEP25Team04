@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin Dashboard</title>
+  <title>Admin Dashboard - Xổ số Tỉnh Thành phố</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,7 +37,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="logo.png">
         <span class="d-none d-lg-block">Flames</span>
       </a>
@@ -69,7 +69,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/change-password}">
                 <i class="bi bi-gear"></i>
                 <span>Change Password</span>
               </a>
@@ -80,7 +80,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -105,22 +105,22 @@
         </a>
         <ul id="lottery-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a th:href="@{/xosomienbac}">
               <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a th:href="@{/xosomientrung}">
               <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a th:href="@{/xosomiennam}">
               <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
             </a>
           </li>
           <li>
-            <a href="#" class="active">
+            <a th:href="@{/xosotinhthanhpho}" class="active">
               <i class="bi bi-circle"></i><span>Xổ số Tỉnh - Thành phố</span>
             </a>
           </li>
@@ -128,7 +128,7 @@
       </li><!-- End Lottery Results Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" th:href="@{/prize}">
           <i class="bi bi-gem"></i>
           <span>Prizes</span>
         </a>
@@ -140,18 +140,18 @@
         </a>
         <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a th:href="@{/account}">
               <i class="bi bi-circle"></i><span>Account List</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a th:href="@{/change-password}">
               <i class="bi bi-circle"></i><span>Change Password</span>
             </a>
           </li>
         </ul>
       </li><!-- End Accounts Nav -->
-
+    </ul>
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
@@ -162,8 +162,114 @@
 
     <section class="section">
       <div class="row">
-        <div class="col-lg-6">
-            
+        <div class="col">
+          <div class="card">
+
+            <div class="card-header">
+              <form >
+                <div class="row mb-3">
+                  <label for="inputDate" class="col-sm-2 col-form-label">Choose Date:</label>
+                  <div class="col-sm-3">
+                    <input id="inputDate" type="date" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputCity"  class="col-sm-2 col-form-label">Choose Province/City</label>
+                  <div class="col-sm-3">
+                    <select id="inputCity" class="form-select" aria-label="Default select example">
+                      <option selected="">Choose Province/City</option>
+                      <option value="1">Hồ Chí Minh</option>
+                      <option value="2">Hà Nội</option>
+                      <option value="3">Hải Phòng</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button class="btn btn-success">Show Result</button>
+              </form>
+            </div>
+
+            <div class="card-body">
+
+              <h4 class="card-title text-center">Kết quả Xổ số Thành phố Hồ Chí Minh ngày: 04/08/2022</h4>
+
+              <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                  <th scope="col">Giải</th>
+                  <th scope="col">Flames</th>
+                  <th scope="col">Minh Ngọc</th>
+                  <th scope="col">Đại Phát</th>
+                </tr>
+
+                <tr>
+                  <th colspan="4" scope="col">Ký hiệu trúng Đặc Biệt: 7BS-9BS-15BS-3BS-4BS-13BS</th>
+                </tr>
+                </thead>
+
+                <tbody >
+                <tr>
+                  <th scope="row">Đặc Biệt</th>
+                  <td>37686</td>
+                  <td>37686</td>
+                  <td>37686</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải nhất</th>
+                  <td>60371</td>
+                  <td>60371</td>
+                  <td>60371</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải nhì</th>
+                  <td>33660 &emsp; 43875</td>
+                  <td>33660 &emsp; 43875</td>
+                  <td>33660 &emsp; 43875</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải ba</th>
+                  <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
+                  <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
+                  <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải tư</th>
+                  <td>9148 &emsp; 3426 &emsp; 1501</td>
+                  <td>9148 &emsp; 3426 &emsp; 1501</td>
+                  <td>9148 &emsp; 3426 &emsp; 1501</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải năm</th>
+                  <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
+                  <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
+                  <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải sáu</th>
+                  <td>686 &emsp; 240 &emsp; 515</td>
+                  <td>686 &emsp; 240 &emsp; 515</td>
+                  <td>686 &emsp; 240 &emsp; 515</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Giải bảy</th>
+                  <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
+                  <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
+                  <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -194,6 +300,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Jquery JS Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 
