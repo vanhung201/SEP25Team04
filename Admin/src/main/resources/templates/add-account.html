@@ -128,6 +128,24 @@
     </li><!-- End Lottery Results Nav -->
 
     <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#crawler-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-file-arrow-down"></i><span>Crawler</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="crawler-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a th:href="@{/minhngoc-crawl}">
+            <i class="bi bi-circle"></i><span>Minh Ngọc</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/daiphat-crawl}">
+            <i class="bi bi-circle"></i><span>Đại Phát</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Crawler Nav -->
+
+    <li class="nav-item">
       <a class="nav-link collapsed" th:href="@{/prize}">
         <i class="bi bi-gem"></i>
         <span>Prizes</span>
