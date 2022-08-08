@@ -214,62 +214,14 @@
               </thead>
 
               <tbody>
-              <tr>
-                <th scope="row">Đặc Biệt</th>
-                <td>37686</td>
-                <td>37686</td>
-                <td>37686</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải nhất</th>
-                <td>60371</td>
-                <td>60371</td>
-                <td>60371</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải nhì</th>
-                <td>33660 &emsp; 43875</td>
-                <td>33660 &emsp; 43875</td>
-                <td>33660 &emsp; 43875</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải ba</th>
-                <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
-                <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
-                <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải tư</th>
-                <td>9148 &emsp; 3426 &emsp; 1501</td>
-                <td>9148 &emsp; 3426 &emsp; 1501</td>
-                <td>9148 &emsp; 3426 &emsp; 1501</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải năm</th>
-                <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
-                <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
-                <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải sáu</th>
-                <td>686 &emsp; 240 &emsp; 515</td>
-                <td>686 &emsp; 240 &emsp; 515</td>
-                <td>686 &emsp; 240 &emsp; 515</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải bảy</th>
-                <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
-                <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
-                <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
-              </tr>
-
+                <th:block th:each="mienBac : ${listMienBac}">
+                  <tr>
+                    <td th:text="${mienBac.giaithuong}"/></td>
+                    <td th:text="${mienBac.sotrungthuong}"/>
+                    <td th:text="${mienBac.sotrungthuong}"/>
+                    <td th:text="${mienBac.sotrungthuong}"/>
+                  </tr>
+                </th:block>
               </tbody>
             </table>
           </div>
