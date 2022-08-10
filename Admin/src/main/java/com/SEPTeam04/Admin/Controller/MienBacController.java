@@ -1,27 +1,29 @@
 package com.SEPTeam04.Admin.Controller;
 
-import com.SEPTeam04.Admin.Entity.KetquaMinhngocT;
-import com.SEPTeam04.Admin.Service.MienBacService;
+import com.SEPTeam04.Admin.Service.DaiPhatService;
+import com.SEPTeam04.Admin.Service.MinhNgocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MienBacController {
 
     @Autowired
-    private MienBacService service;
+    private MinhNgocService minhNgocService;
+
+    @Autowired
+    private DaiPhatService daiPhatService;
 
     @GetMapping("/xosomienbac")
-    public String showMienBac(Model model) {
+    public String viewListOfMienBac(Model model, @RequestParam("date") String date, @RequestParam("mien") Integer id_mien) {
 
-        List<KetquaMinhngocT> listMienBac = service.listAll();
-        model.addAttribute("listMienBac", listMienBac);
-
+        model.addAttribute("listMN", minhNgocService.minhNgocResult(date, id_mien));
+        model.addAttribute("listDP", daiPhatService.daiPhatResult(date, id_mien));
         return "/index";
     }
+
 
 }

@@ -184,11 +184,11 @@
         <div class="card">
 
           <div class="card-header">
-            <form >
+            <form method="POST">
               <div class="row mb-3">
                 <label for="inputDate" class="col-sm-2 col-form-label">Choose Date:</label>
                 <div class="col-sm-2">
-                  <input id="inputDate" type="date" class="form-control" required>
+                  <input id="inputDate" type="date" class="form-control" name="date" srequired>
                 </div>
               </div>
               <button class="btn btn-success">Show Result</button>
@@ -214,14 +214,14 @@
               </thead>
 
               <tbody>
-                <th:block th:each="mienBac : ${listMienBac}">
-                  <tr>
-                    <td th:text="${mienBac.giaithuong}"/></td>
-                    <td th:text="${mienBac.sotrungthuong}"/>
-                    <td th:text="${mienBac.sotrungthuong}"/>
-                    <td th:text="${mienBac.sotrungthuong}"/>
-                  </tr>
-                </th:block>
+
+              <tr th:each="mn : ${listMN}">
+                <th scope="row" th:text="${mn.giaithuong.tengiaithuong}"></th>
+                <td th:text="${mn.sotrungthuong}"></td>
+                <td ></td>
+                <td></td>
+              </tr>
+
               </tbody>
             </table>
           </div>

@@ -1,7 +1,6 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -15,17 +14,17 @@ public class Mien {
     @Column(name = "tenmien", length = 20)
     private String tenmien;
 
-    @OneToMany(mappedBy = "idMien")
-    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "mien", cascade = CascadeType.ALL)
+    private Set<KetquaMinhngoc> ketQuaMinhNgoc;
 
-    @OneToMany(mappedBy = "idMien")
-    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "mien", cascade = CascadeType.ALL)
+    private Set<TinhThanhpho> tinhThanhPho;
 
-    @OneToMany(mappedBy = "idMien")
-    private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "mien", cascade = CascadeType.ALL)
+    private Set<KetquaDaiphat> ketQuaDaiPhat;
 
-    @OneToMany(mappedBy = "idMien")
-    private Set<TinhThanhpho> tinhThanhphos = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "mien", cascade = CascadeType.ALL)
+    private Set<Ketquadoso> ketQuaDoSo;
 
     public Integer getId() {
         return id;
@@ -43,36 +42,35 @@ public class Mien {
         this.tenmien = tenmien;
     }
 
-    public Set<Ketquadoso> getKetquadosos() {
-        return ketquadosos;
+    public Set<KetquaMinhngoc> getKetQuaMinhNgoc() {
+        return ketQuaMinhNgoc;
     }
 
-    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
-        this.ketquadosos = ketquadosos;
+    public void setKetQuaMinhNgoc(Set<KetquaMinhngoc> ketQuaMinhNgoc) {
+        this.ketQuaMinhNgoc = ketQuaMinhNgoc;
     }
 
-    public Set<KetquaDaiphat> getKetquaDaiphats() {
-        return ketquaDaiphats;
+    public Set<TinhThanhpho> getTinhThanhPho() {
+        return tinhThanhPho;
     }
 
-    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
-        this.ketquaDaiphats = ketquaDaiphats;
+    public void setTinhThanhPho(Set<TinhThanhpho> tinhThanhPho) {
+        this.tinhThanhPho = tinhThanhPho;
     }
 
-    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
-        return ketquaMinhngocs;
+    public Set<KetquaDaiphat> getKetQuaDaiPhat() {
+        return ketQuaDaiPhat;
     }
 
-    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
-        this.ketquaMinhngocs = ketquaMinhngocs;
+    public void setKetQuaDaiPhat(Set<KetquaDaiphat> ketQuaDaiPhat) {
+        this.ketQuaDaiPhat = ketQuaDaiPhat;
     }
 
-    public Set<TinhThanhpho> getTinhThanhphos() {
-        return tinhThanhphos;
+    public Set<Ketquadoso> getKetQuaDoSo() {
+        return ketQuaDoSo;
     }
 
-    public void setTinhThanhphos(Set<TinhThanhpho> tinhThanhphos) {
-        this.tinhThanhphos = tinhThanhphos;
+    public void setKetQuaDoSo(Set<Ketquadoso> ketQuaDoSo) {
+        this.ketQuaDoSo = ketQuaDoSo;
     }
-
 }
