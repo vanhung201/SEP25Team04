@@ -1,23 +1,29 @@
 package com.SEPTeam04.Admin.Controller;
 
 import com.SEPTeam04.Admin.Entity.AdminAccount;
-import com.SEPTeam04.Admin.Repository.AdminRepository;
 import com.SEPTeam04.Admin.Service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 public class AccountController {
 
     @Autowired
     private AdminService adminService;
+
+    public AccountController() {
+
+    }
+
+    public AccountController(AdminService adminService) {
+        this.adminService = adminService;
+    }
 
     @GetMapping("/account")
     public String viewListOfAdminAccount(Model model) {
@@ -36,7 +42,7 @@ public class AccountController {
     }
 
     @PostMapping("/saveAccount")
-    public String saveAdminAccount(@ModelAttribute("account") AdminAccount adminAccount, RedirectAttributes attributes) {
+    public String saveAdminAccount(@ModelAttribute("account") AdminAccount adminAccount, Principal principal, RedirectAttributes attributes) {
         // save admin account to database
         adminService.saveAdminAccount(adminAccount);
         attributes.addFlashAttribute("message", "Add new account successfully.");
@@ -55,6 +61,21 @@ public class AccountController {
         return "/edit-account";
     }
 
+    @PostMapping("/saveEditAccount/{id}")
+    public String saveEditAdminAccount(@PathVariable (value = "id") Integer id,
+                                       @ModelAttribute("account") AdminAccount adminAccount, RedirectAttributes attributes) {
+        // get Admin Account from service
+        AdminAccount existingAdminAccount = adminService.getAdminAccountById(id);
+
+        existingAdminAccount.setId(id);
+        existingAdminAccount.setHovaten(adminAccount.getHovaten());
+
+        adminService.updateAdminAccount(existingAdminAccount);
+        attributes.addFlashAttribute("message", "Update account successfully.");
+
+        return "redirect:/account";
+    }
+
     @GetMapping("/deleteAccount/{id}")
     public String deleteAdminAccount(@PathVariable (value = "id") Integer id, RedirectAttributes attributes) {
         // call delete Admin Account method
@@ -65,8 +86,43 @@ public class AccountController {
     }
 
     @GetMapping("/change-password")
-    public String showChangePassword(Model model) {
+    public String showChangePassword() {
 
         return "/change-password";
+    }
+
+    @PostMapping("/changePassword")
+    public String changePassword(@RequestParam("currentPassword") String currentPassword,
+                                 @RequestParam("newPassword") String newPassword,
+                                 @RequestParam("reNewPassword") String reNewPassword,
+                                 Principal principal,
+                                 RedirectAttributes attributes) {
+
+        String userName = principal.getName();
+        AdminAccount curentUser = adminService.getAdminAccountByUsername(userName);
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        if (passwordEncoder.matches(currentPassword, curentUser.getPassword())) {
+            if (passwordEncoder.matches(newPassword, curentUser.getPassword())) {
+                attributes.addFlashAttribute("messageError", "New password same with current password.");
+            } else {
+                if (reNewPassword.equals(newPassword)) {
+
+                    curentUser.setUsername(userName);
+                    curentUser.setPassword(passwordEncoder.encode(newPassword));
+
+                    adminService.saveChangePasswordAdminAccount(curentUser);
+
+                    attributes.addFlashAttribute("messageSuccess", "Change password successfully.");
+                } else {
+                    attributes.addFlashAttribute("messageError", "The password confirmation does not match.");
+                }
+            }
+        } else {
+            attributes.addFlashAttribute("messageError", "Current password is incorrect.");
+        }
+
+        return "redirect:/change-password";
     }
 }

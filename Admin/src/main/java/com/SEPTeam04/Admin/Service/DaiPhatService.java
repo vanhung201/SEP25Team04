@@ -21,7 +21,7 @@ public class DaiPhatService {
     }
 
     public List<KetquaDaiphat> daiPhatResult(String date, Integer id_mien) {
-        return repository.findAllByNgayAndMien_Id(date, id_mien);
+        return repository.findAllByNgayAndMien_IdOrderByGiaithuongIdAsc(date, id_mien);
     }
 
 }

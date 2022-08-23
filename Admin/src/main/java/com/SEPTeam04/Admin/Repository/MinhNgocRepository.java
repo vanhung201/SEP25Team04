@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface MinhNgocRepository extends JpaRepository<KetquaMinhngoc, Integer> {
 
-    List<KetquaMinhngoc> findAllByNgayAndMien_Id(String date, Integer id_mien);
+    List<KetquaMinhngoc> findAllByNgayAndMien_IdOrderByGiaithuongIdAsc(String date, Integer id_mien);
 }

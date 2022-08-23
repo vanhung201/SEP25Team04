@@ -14,6 +14,15 @@ public interface AdminService {
     // function get admin account by id
     AdminAccount getAdminAccountById(Integer id);
 
+    // function get admin account by userName
+    AdminAccount getAdminAccountByUsername(String userName);
+
+    // function update admin account
+    AdminAccount updateAdminAccount(AdminAccount adminAccount);
+
+    // function save change password admin account
+    AdminAccount saveChangePasswordAdminAccount(AdminAccount adminAccount);
+
     // function delete admin account
     void deleteAdminAccountById(Integer id);
 }

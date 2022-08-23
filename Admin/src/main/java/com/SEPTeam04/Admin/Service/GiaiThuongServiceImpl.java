@@ -14,18 +14,29 @@ public class GiaiThuongServiceImpl implements GiaiThuongService {
     @Autowired
     private GiaiThuongRepository giaiThuongRepository;
 
+    public GiaiThuongServiceImpl() {
+
+    }
+
+    public GiaiThuongServiceImpl(GiaiThuongRepository giaiThuongRepository) {
+        this.giaiThuongRepository = giaiThuongRepository;
+    }
+
     @Override
     public List<Giaithuong> getAllGiaiThuong() {
+
         return giaiThuongRepository.findAll();
     }
 
     @Override
     public void saveGiaiThuong(Giaithuong giaithuong) {
-        this.giaiThuongRepository.save(giaithuong);
+
+        giaiThuongRepository.save(giaithuong);
     }
 
     @Override
     public Giaithuong getGiaiThuongById(Integer id) {
+
         Optional<Giaithuong> optional = giaiThuongRepository.findById(id);
         Giaithuong giaithuong = null;
 
@@ -38,7 +49,14 @@ public class GiaiThuongServiceImpl implements GiaiThuongService {
     }
 
     @Override
+    public Giaithuong updateGiaiThuong(Giaithuong giaithuong) {
+
+        return giaiThuongRepository.save(giaithuong);
+    }
+
+    @Override
     public void deleteGiaiThuongById(Integer id) {
-        this.giaiThuongRepository.deleteById(id);
+
+        giaiThuongRepository.deleteById(id);
     }
 }

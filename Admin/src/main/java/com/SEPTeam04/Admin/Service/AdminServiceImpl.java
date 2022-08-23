@@ -3,6 +3,7 @@ package com.SEPTeam04.Admin.Service;
 import com.SEPTeam04.Admin.Entity.AdminAccount;
 import com.SEPTeam04.Admin.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,14 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private AdminRepository adminRepository;
-    PasswordEncoder passwordEncoder;
+
+    public AdminServiceImpl() {
+
+    }
+
+    public AdminServiceImpl(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+    }
 
     @Override
     public List<AdminAccount> getAllAdminAccount() {
@@ -23,9 +31,16 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveAdminAccount(AdminAccount adminAccount) {
-        String encodedPassword = this.passwordEncoder.encode(adminAccount.getPassword());
-        adminAccount.setPassword(encodedPassword);
-        this.adminRepository.save(adminAccount);
+        AdminAccount account = new AdminAccount();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        account.setUsername(adminAccount.getUsername());
+        account.setPassword(passwordEncoder.encode(adminAccount.getPassword()));
+        account.setHovaten(adminAccount.getHovaten());
+        account.setRole("Admin");
+        account.setTrangthaitaikhoan(true);
+
+        adminRepository.save(account);
     }
 
     @Override
@@ -41,8 +56,32 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public AdminAccount getAdminAccountByUsername(String userName) {
+        Optional<AdminAccount> optional = adminRepository.findAdminAccountByUsername(userName);
+        AdminAccount adminAccount = null;
+        if (optional.isPresent()) {
+            adminAccount = optional.get();
+        } else {
+            throw new RuntimeException("Admin Account not found for Username :: " + userName);
+        }
+        return adminAccount;
+    }
+
+    @Override
+    public AdminAccount updateAdminAccount(AdminAccount adminAccount) {
+
+        return adminRepository.save(adminAccount);
+    }
+
+    @Override
+    public AdminAccount saveChangePasswordAdminAccount(AdminAccount adminAccount) {
+
+        return adminRepository.save(adminAccount);
+    }
+
+    @Override
     public void deleteAdminAccountById(Integer id) {
-        this.adminRepository.deleteById(id);
+        adminRepository.deleteById(id);
     }
 
 }

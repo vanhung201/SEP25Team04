@@ -23,7 +23,7 @@ public class MinhNgocService {
     }
 
     public List<KetquaMinhngoc> minhNgocResult(String date, Integer id_mien) {
-        return repository.findAllByNgayAndMien_Id(date, id_mien);
+        return repository.findAllByNgayAndMien_IdOrderByGiaithuongIdAsc(date, id_mien);
     }
 
 }

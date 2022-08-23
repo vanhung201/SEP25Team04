@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface DaiPhatRepository extends JpaRepository<KetquaDaiphat, Integer> {
 
-    List<KetquaDaiphat> findAllByNgayAndMien_Id(String date, Integer id_mien);
+    List<KetquaDaiphat> findAllByNgayAndMien_IdOrderByGiaithuongIdAsc(String date, Integer id_mien);
 }

@@ -14,6 +14,9 @@ public interface GiaiThuongService {
     // function get prize by id
     Giaithuong getGiaiThuongById(Integer id);
 
+    // function update prize
+    Giaithuong updateGiaiThuong(Giaithuong giaithuong);
+
     // function delete prize
     void deleteGiaiThuongById(Integer id);
 }
