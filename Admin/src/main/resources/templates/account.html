@@ -100,28 +100,41 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#lottery-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed " data-bs-target="#lottery-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Lottery Results</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="lottery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/xosomienbac}">
+            <a th:href="@{/mienbac}">
               <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/xosomientrung}">
+            <a th:href="@{/mientrung}">
               <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
             </a>
           </li>
           <li>
-            <a th:href="@{/xosomiennam}">
+            <a th:href="@{/miennam}">
               <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
             </a>
           </li>
+        </ul>
+      </li><!-- End Lottery Results Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#crawler-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-file-arrow-down"></i><span>Crawler</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="crawler-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/xosotinhthanhpho}">
-              <i class="bi bi-circle"></i><span>Xổ số Tỉnh - Thành phố</span>
+            <a th:href="@{/crawldata}">
+              <i class="bi bi-circle"></i><span>Crawl Data</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/crawldetail}">
+              <i class="bi bi-circle"></i><span>Detail Crawl</span>
             </a>
           </li>
         </ul>
@@ -138,7 +151,7 @@
         <a class="nav-link " data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-person"></i><span>Account</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="account-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        <ul id="account-nav" class="nav-content collapse show " data-bs-parent="#sidebar-nav">
           <li>
             <a th:href="@{/account}" class="active">
               <i class="bi bi-circle"></i><span>Account List</span>

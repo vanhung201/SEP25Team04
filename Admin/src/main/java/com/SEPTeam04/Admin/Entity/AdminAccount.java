@@ -1,5 +1,7 @@
 package com.SEPTeam04.Admin.Entity;
 
+import org.hibernate.annotations.Nationalized;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class AdminAccount {
     @Column(name = "password", length = 128)
     private String password;
 
+    @Nationalized
     @Column(name = "hovaten", length = 30)
     private String hovaten;
 

@@ -1,8 +1,8 @@
 package com.SEPTeam04.Admin.Entity;
 
+import org.hibernate.annotations.Nationalized;
+
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "TINH_THANHPHO")
@@ -15,21 +15,12 @@ public class TinhThanhpho {
     @Column(name = "matinh_thanhpho", length = 5)
     private String matinhThanhpho;
 
+    @Nationalized
     @Column(name = "tentinh_thanhpho", length = 20)
     private String tentinhThanhpho;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_mien")
-    private Mien idMien;
-
-    @OneToMany(mappedBy = "idTinhthanhpho")
-    private Set<Ketquadoso> ketquadosos = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idTinhthanhpho")
-    private Set<KetquaDaiphat> ketquaDaiphats = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idTinhthanhpho")
-    private Set<KetquaMinhngoc> ketquaMinhngocs = new LinkedHashSet<>();
+    @Column(name = "id_mien")
+    private Integer idMien;
 
     public Integer getId() {
         return id;
@@ -55,36 +46,12 @@ public class TinhThanhpho {
         this.tentinhThanhpho = tentinhThanhpho;
     }
 
-    public Mien getIdMien() {
+    public Integer getIdMien() {
         return idMien;
     }
 
-    public void setIdMien(Mien idMien) {
+    public void setIdMien(Integer idMien) {
         this.idMien = idMien;
-    }
-
-    public Set<Ketquadoso> getKetquadosos() {
-        return ketquadosos;
-    }
-
-    public void setKetquadosos(Set<Ketquadoso> ketquadosos) {
-        this.ketquadosos = ketquadosos;
-    }
-
-    public Set<KetquaDaiphat> getKetquaDaiphats() {
-        return ketquaDaiphats;
-    }
-
-    public void setKetquaDaiphats(Set<KetquaDaiphat> ketquaDaiphats) {
-        this.ketquaDaiphats = ketquaDaiphats;
-    }
-
-    public Set<KetquaMinhngoc> getKetquaMinhngocs() {
-        return ketquaMinhngocs;
-    }
-
-    public void setKetquaMinhngocs(Set<KetquaMinhngoc> ketquaMinhngocs) {
-        this.ketquaMinhngocs = ketquaMinhngocs;
     }
 
 }

@@ -1,12 +1,10 @@
 package com.SEPTeam04.Admin.Controller;
 
 import com.SEPTeam04.Admin.Entity.AdminAccount;
-import com.SEPTeam04.Admin.Repository.AdminRepository;
 import com.SEPTeam04.Admin.Service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;

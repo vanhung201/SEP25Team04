@@ -1251,3 +1251,8 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+#dt {
+  text-indent: -500px;
+  height: 25px;
+  width: 200px;
+}
