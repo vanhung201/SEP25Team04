@@ -14,18 +14,19 @@ import java.util.List;
 
 @Service
 public class CompareService {
-
     @Autowired
     private DaiPhatGetRepository daiPhatGetRepository;
 
     @Autowired
     private MinhNgocGetRepository minhNgocGetRepository;
-
     @Autowired
     MinhNgocService minhNgocService;
-
     @Autowired
     private FlameRepository flameRepository;
+    @Autowired
+    private GiaiThuongService giaiThuongService;
+    // @Autowired
+    // private KetquaMapper ketquaMapper;
 
     private KetquaMinhngoc comPare(KetquaMinhngoc ketquaMinhngoc, KetquaDaiphat ketquaDaiphat) {
         return ketquaMinhngoc.getSotrungthuong().equals(ketquaDaiphat.getSotrungthuong()) ? ketquaMinhngoc : null;
@@ -57,10 +58,6 @@ public class CompareService {
                 redirectAttributes.addFlashAttribute("messageError", "Convert Faild Because Lottery Does Not Match");
                 flameRepository.save(ketquadoso);
             }
-
         }
-
     }
-
-
 }

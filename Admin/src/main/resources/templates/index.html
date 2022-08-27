@@ -37,7 +37,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
-    <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
+    <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
       <img src="assets/img/logo.png" alt="logo.png">
       <span class="d-none d-lg-block">Flames</span>
     </a>
@@ -105,23 +105,18 @@
       </a>
       <ul id="lottery-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
         <li>
-          <a th:href="@{/xosomienbac}" class="active">
+          <a th:href="@{/mienbac}" class="active">
             <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
           </a>
         </li>
         <li>
-          <a th:href="@{/xosomientrung}">
+          <a th:href="@{/mientrung}">
             <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
           </a>
         </li>
         <li>
-          <a th:href="@{/xosomiennam}">
+          <a th:href="@{/miennam}">
             <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
-          </a>
-        </li>
-        <li>
-          <a th:href="@{/xosotinhthanhpho}">
-            <i class="bi bi-circle"></i><span>Xổ số Tỉnh - Thành phố</span>
           </a>
         </li>
       </ul>
@@ -133,13 +128,13 @@
       </a>
       <ul id="crawler-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a th:href="@{/minhngoc-crawl}">
-            <i class="bi bi-circle"></i><span>Minh Ngọc</span>
+          <a th:href="@{/crawldata}">
+            <i class="bi bi-circle"></i><span>Crawl Data</span>
           </a>
         </li>
         <li>
-          <a th:href="@{/daiphat-crawl}">
-            <i class="bi bi-circle"></i><span>Đại Phát</span>
+          <a th:href="@{/crawldetail}">
+            <i class="bi bi-circle"></i><span>Detail Crawl</span>
           </a>
         </li>
       </ul>
@@ -178,52 +173,47 @@
         <h1>Kết quả Xổ số Miền Bắc</h1>
     </div><!-- End Page Title -->
 
+  <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle me-1"></i>
+    [[${message}]]
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
   <section class="section">
     <div class="row">
       <div class="col">
         <div class="card">
+          <script>
+            $('#date').datepicker({ dateFormat: 'dd/mm/yyyy' }).val();
+          </script>
 
           <div class="card-header">
-            <form method="POST">
+            <form action="xosomienbac" method="post">
               <div class="row mb-3">
-                <label for="inputDate" class="col-sm-2 col-form-label">Choose Date:</label>
-                <div class="col-sm-2">
-                  <input id="inputDate" type="date" class="form-control" name="date" srequired>
+                <label  class="col-sm-2 col-form-label">Choose Date:</label>
+                <div class="col-sm-3">
+                  <input type="date" name="date" value="${date}" class="form-control" required>
+                  <input type="text" name="mien" value="2" hidden>
                 </div>
               </div>
-              <button class="btn btn-success" type="submit">Show Result</button>
+
+              <div class="row mb-3">
+                <label for="inputCity"  class="col-sm-2 col-form-label">Choose Province/City</label>
+                <div class="col-sm-3">
+                  <select id="inputCity" class="form-select" aria-label="Default select example" name="tinhthanhpho" value="#ttpid">
+                    <option id="ttpid"name="tinhthanhpho" value="1">Hà Nội</option>
+                    <option name="tinhthanhpho" value="2">Quảng Ninh</option>
+                    <option name="tinhthanhpho" value="3">Bắc Ninh</option>
+                    <option name="tinhthanhpho" value="4">Hải Phòng</option>
+                    <option name="tinhthanhpho" value="5">Nam Định</option>
+                    <option name="tinhthanhpho" value="6">Thái Bình</option>
+                  </select>
+                </div>
+              </div>
+
+              <button formaction="xosomienbac" class="btn btn-success">Show Result</button>
+
             </form>
-          </div>
-
-          <div class="card-body">
-
-            <h4 class="card-title text-center">Kết quả Xổ số Miền Bắc ngày: ...</h4>
-
-            <table class="table table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col">Flames</th>
-                  <th scope="col"></th>
-                  <th scope="col">Minh Ngọc</th>
-                  <th scope="col"></th>
-                  <th scope="col">Đại Phát</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <!--<tr th:each="mn : ${listMN}">
-                  <th scope="row" th:text="${mn.giaithuong.tengiaithuong}"></th>
-                  <td th:text="${mn.sotrungthuong}"></td>
-                </tr>-->
-
-                <tr th:each="dp : ${listDP}">
-                  <th scope="row" th:text="${dp.giaithuong.tengiaithuong}"></th>
-                  <td th:text="${dp.sotrungthuong}"></td>
-                </tr>
-
-              </tbody>
-            </table>
           </div>
 
         </div>

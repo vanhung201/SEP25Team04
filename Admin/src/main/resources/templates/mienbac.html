@@ -13,7 +13,8 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +36,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
+        <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="logo.png">
             <span class="d-none d-lg-block">Flames</span>
         </a>
@@ -62,7 +63,7 @@
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">Flames Admin</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">[[${#request.userPrincipal.principal.getFullName}]]</span>
                 </a><!-- End Profile Image Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -175,29 +176,36 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <script>$('#date').datepicker({ dateFormat: 'dd/mm/yyyy' }).val();</script>
+
+                    <script>
+                        $('#date').datepicker({dateFormat: 'dd/mm/yyyy'}).val();
+                    </script>
+
                     <div class="card-header">
                         <form action="xosomienbac" method="post">
                             <div class="row mb-3">
-                                <label  class="col-sm-2 col-form-label">Choose Date:</label>
-                                <div class="col-sm-2">
-                                    <input type="date" name="date" required>
-                                    <input type="text" name="mien" value="3" hidden>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputCity"  class="col-sm-2 col-form-label">Choose Province/City</label>
-                                    <div class="col-sm-3">
-                                        <select id="inputCity" class="form-select" aria-label="Default select example" name="tinhthanhpho" value="#ttpid">
-                                            <option id="ttpid"name="tinhthanhpho" value="1">Hà Nội</option>
-                                            <option name="tinhthanhpho" value="2">Quảng Ninh</option>
-                                            <option name="tinhthanhpho" value="3">Bắc Ninh</option>
-                                            <option name="tinhthanhpho" value="4">Hải Phòng</option>
-                                            <option name="tinhthanhpho" value="5">Nam Định</option>
-                                            <option name="tinhthanhpho" value="6">Thái Bình</option>
-                                        </select>
-                                    </div>
+                                <label class="col-sm-2 col-form-label">Choose Date:</label>
+                                <div class="col-sm-3">
+                                    <input type="date" name="date" value="${date}" class="form-control" required>
+                                    <input type="text" name="mien" value="1" hidden>
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <label for="inputCity" class="col-sm-2 col-form-label">Choose Province/City</label>
+                                <div class="col-sm-3">
+                                    <select id="inputCity" class="form-select" aria-label="Default select example"
+                                            name="tinhthanhpho" value="#ttpid">
+                                        <option id="ttpid" name="tinhthanhpho" value="1">Hà Nội</option>
+                                        <option name="tinhthanhpho" value="2">Quảng Ninh</option>
+                                        <option name="tinhthanhpho" value="3">Bắc Ninh</option>
+                                        <option name="tinhthanhpho" value="4">Hải Phòng</option>
+                                        <option name="tinhthanhpho" value="5">Nam Định</option>
+                                        <option name="tinhthanhpho" value="6">Thái Bình</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <button class="btn btn-success">Show Result</button>
                         </form>
                     </div>
@@ -218,7 +226,8 @@
     </div>
 </footer><!-- End Footer -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
