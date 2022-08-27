@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DaiPhatRepository extends JpaRepository<KetquaDaiphat, Integer> {
-
+public interface DaiPhatGetRepository extends JpaRepository<KetquaDaiphat, Integer> {
+    List<KetquaDaiphat> findAllByNgayAndIdMienAndIdTinhthanhphoOrderByIdGiaithuongAsc(String date, Integer id_mien, Integer id_tinhthanhpho);
 }

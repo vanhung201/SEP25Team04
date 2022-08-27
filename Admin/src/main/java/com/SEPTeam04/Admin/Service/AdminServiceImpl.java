@@ -4,7 +4,6 @@ import com.SEPTeam04.Admin.Entity.AdminAccount;
 import com.SEPTeam04.Admin.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -82,6 +81,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void deleteAdminAccountById(Integer id) {
         adminRepository.deleteById(id);
+    }
+
+    @Override
+    public String getUsername(String username) {
+        return adminRepository.getUsername(username);
     }
 
 }

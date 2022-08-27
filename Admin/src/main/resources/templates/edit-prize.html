@@ -185,7 +185,7 @@
             <div class="card-body">
               <h5 class="card"></h5>
 
-              <form class="row g-3 needs-validation" action="#" th:action="@{@{/saveEditPrize/{id} (id=${prize.id})}}" method="POST" th:object="${prize}" novalidate>
+              <form class="row g-3 needs-validation" action="#" th:action="@{/saveEditPrize/{id} (id=${prize.id})}" method="POST" th:object="${prize}" novalidate>
 
                 <div class="col-md-12">
                   <label for="validationPrizeName" class="form-label">Prize Name</label>

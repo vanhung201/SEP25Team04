@@ -42,10 +42,17 @@ public class AccountController {
     }
 
     @PostMapping("/saveAccount")
-    public String saveAdminAccount(@ModelAttribute("account") AdminAccount adminAccount, Principal principal, RedirectAttributes attributes) {
-        // save admin account to database
-        adminService.saveAdminAccount(adminAccount);
-        attributes.addFlashAttribute("message", "Add new account successfully.");
+    public String saveAdminAccount(@RequestParam("username") String username,
+                                   @ModelAttribute("account") AdminAccount adminAccount,
+                                   RedirectAttributes attributes) {
+
+        if (username.equals(adminService.getUsername(username))) {
+            attributes.addFlashAttribute("messageError", "This username already exist!!!");
+        } else {
+            // save admin account to database
+            adminService.saveAdminAccount(adminAccount);
+            attributes.addFlashAttribute("message", "Add new account successfully.");
+        }
 
         return "redirect:/account";
     }

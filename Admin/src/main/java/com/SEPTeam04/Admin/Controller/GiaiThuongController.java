@@ -1,6 +1,5 @@
 package com.SEPTeam04.Admin.Controller;
 
-import com.SEPTeam04.Admin.Entity.AdminAccount;
 import com.SEPTeam04.Admin.Entity.Giaithuong;
 import com.SEPTeam04.Admin.Service.GiaiThuongService;
 import org.springframework.beans.factory.annotation.Autowired;

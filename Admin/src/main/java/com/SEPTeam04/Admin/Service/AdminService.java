@@ -25,4 +25,7 @@ public interface AdminService {
 
     // function delete admin account
     void deleteAdminAccountById(Integer id);
+
+    // function get username of admin account
+    String getUsername(String username);
 }

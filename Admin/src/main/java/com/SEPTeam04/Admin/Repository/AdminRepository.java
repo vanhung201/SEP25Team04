@@ -15,4 +15,8 @@ public interface AdminRepository extends JpaRepository<AdminAccount, Integer> {
     AdminAccount getAdminAccountByUsername(@Param("username") String username);
 
     Optional<AdminAccount> findAdminAccountByUsername(String userName);
+
+    @Query("SELECT username FROM AdminAccount WHERE username = :username")
+    String getUsername(@Param("username") String username);
+
 }

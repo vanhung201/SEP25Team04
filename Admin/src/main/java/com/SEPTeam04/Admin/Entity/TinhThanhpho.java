@@ -1,8 +1,6 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "TINH_THANHPHO")
@@ -18,18 +16,8 @@ public class TinhThanhpho {
     @Column(name = "tentinh_thanhpho", length = 20)
     private String tentinhThanhpho;
 
-    @OneToMany(mappedBy = "tinhThanhpho", cascade = CascadeType.ALL)
-    private Set<KetquaMinhngoc> ketQuaMinhNgoc;
-
-    @OneToMany(mappedBy = "tinhThanhpho", cascade = CascadeType.ALL)
-    private Set<KetquaDaiphat> ketQuaDaiPhat;
-
-    @OneToMany(mappedBy = "tinhThanhpho", cascade = CascadeType.ALL)
-    private Set<Ketquadoso> ketQuaDoSo;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_mien")
-    private Mien mien;
+    @Column(name = "id_mien")
+    private Integer idMien;
 
     public Integer getId() {
         return id;
@@ -55,35 +43,12 @@ public class TinhThanhpho {
         this.tentinhThanhpho = tentinhThanhpho;
     }
 
-    public Set<KetquaMinhngoc> getKetQuaMinhNgoc() {
-        return ketQuaMinhNgoc;
+    public Integer getIdMien() {
+        return idMien;
     }
 
-    public void setKetQuaMinhNgoc(Set<KetquaMinhngoc> ketQuaMinhNgoc) {
-        this.ketQuaMinhNgoc = ketQuaMinhNgoc;
+    public void setIdMien(Integer idMien) {
+        this.idMien = idMien;
     }
 
-    public Set<KetquaDaiphat> getKetQuaDaiPhat() {
-        return ketQuaDaiPhat;
-    }
-
-    public void setKetQuaDaiPhat(Set<KetquaDaiphat> ketQuaDaiPhat) {
-        this.ketQuaDaiPhat = ketQuaDaiPhat;
-    }
-
-    public Set<Ketquadoso> getKetQuaDoSo() {
-        return ketQuaDoSo;
-    }
-
-    public void setKetQuaDoSo(Set<Ketquadoso> ketQuaDoSo) {
-        this.ketQuaDoSo = ketQuaDoSo;
-    }
-
-    public Mien getMien() {
-        return mien;
-    }
-
-    public void setMien(Mien mien) {
-        this.mien = mien;
-    }
 }

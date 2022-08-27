@@ -1,7 +1,6 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "GIAITHUONG")
@@ -16,15 +15,6 @@ public class Giaithuong {
 
     @Column(name = "sotienthuong")
     private Integer sotienthuong;
-
-    @OneToMany(mappedBy = "giaithuong", cascade = CascadeType.ALL)
-    private Set<KetquaMinhngoc> ketQuaMinhNgoc;
-
-    @OneToMany(mappedBy = "giaithuong", cascade = CascadeType.ALL)
-    private Set<KetquaDaiphat> ketQuaDaiPhat;
-
-    @OneToMany(mappedBy = "giaithuong", cascade = CascadeType.ALL)
-    private Set<Ketquadoso> ketQuaDoSo;
 
     public Integer getId() {
         return id;
@@ -50,27 +40,4 @@ public class Giaithuong {
         this.sotienthuong = sotienthuong;
     }
 
-    public Set<KetquaMinhngoc> getKetQuaMinhNgoc() {
-        return ketQuaMinhNgoc;
-    }
-
-    public void setKetQuaMinhNgoc(Set<KetquaMinhngoc> ketQuaMinhNgoc) {
-        this.ketQuaMinhNgoc = ketQuaMinhNgoc;
-    }
-
-    public Set<KetquaDaiphat> getKetQuaDaiPhat() {
-        return ketQuaDaiPhat;
-    }
-
-    public void setKetQuaDaiPhat(Set<KetquaDaiphat> ketQuaDaiPhat) {
-        this.ketQuaDaiPhat = ketQuaDaiPhat;
-    }
-
-    public Set<Ketquadoso> getKetQuaDoSo() {
-        return ketQuaDoSo;
-    }
-
-    public void setKetQuaDoSo(Set<Ketquadoso> ketQuaDoSo) {
-        this.ketQuaDoSo = ketQuaDoSo;
-    }
 }
