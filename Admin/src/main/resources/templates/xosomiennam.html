@@ -37,7 +37,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
+      <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
         <img src="../assets/img/logo.png" alt="logo.png">
         <span class="d-none d-lg-block">Flames</span>
       </a>
@@ -171,7 +171,11 @@
     <div class="pagetitle">
       <h1>Kết quả Xổ số Miền Nam</h1>
     </div><!-- End Page Title -->
-
+    <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="bi bi-check-circle me-1"></i>
+      [[${message}]]
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <section class="section">
       <div class="row">
         <div class="col">
@@ -180,11 +184,12 @@
             <div class="card-header">
               <form action="getdateMN" method="post">
                 <div class="row mb-3">
-                  <label  class="col-sm-2 col-form-label">Choose Date:</label>
-                  <div class="col-sm-2">
-                    <input type="date" name="date" required>
-                    <input type="text" name="mien" value="3" hidden>
+                  <label class="col-sm-2 col-form-label">Choose Date:</label>
+                  <div class="col-sm-3">
+                    <input type="date" name="date" value="${date}" class="form-control" required>
+                    <input type="text" name="mien" value="2" hidden>
                   </div>
+                </div>
                   <div class="row mb-3">
                     <label for="inputCity"  class="col-sm-2 col-form-label">Choose Province/City</label>
                     <div class="col-sm-3">
@@ -213,16 +218,15 @@
                       </select>
                     </div>
                   </div>
-                </div>
                 <button class="btn btn-success">Show Result</button>
               </form>
             </div>
 
             <div class="card-body">
 
-              <div th:object="${getttp}">
-                <h4 class="card-title text-center" th:text="'Kết quả Xổ số Miền Nam - Tỉnh: '+ *{tentinhThanhpho}"></h4>
-                <h4 class="text-center" th:text="'Ngày: '+${date}"></h4>
+              <div class="card-title text-center" th:object="${getttp}">
+                <h3 th:text="'Kết quả Xổ số Miền Nam - Tỉnh/Thành phố: '+ *{tentinhThanhpho}"></h3>
+                <h4 th:text="'Ngày: '+${date}"></h4>
               </div>
 
               <table class="table table-striped table-bordered">
@@ -249,6 +253,11 @@
                     <table class="table table-striped table-bordered">
                       <tr th:each="fl : ${listFlame}">
                         <td th:text="${fl.sotrungthuong}">
+                        </td>
+                        <td>
+                          <a type="button" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                             th:href="@{/editLotteryNumberMN/{id}(id=${fl.id})}"><i class="bi bi-pencil-square"></i>
+                          </a>
                         </td>
                       </tr>
                     </table>

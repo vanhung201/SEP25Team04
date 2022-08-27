@@ -21,15 +21,22 @@ public class FlameService {
         return flameRepository.findAllByNgayAndIdMienAndIdTinhthanhphoOrderByIdGiaithuongAsc(date, id_mien, id_tinhthanhpho);
     }
 
-    public  Ketquadoso getKetquaId(Integer id) {
+    public Ketquadoso getKetquaId(Integer id) {
+
         Optional<Ketquadoso> optional = flameRepository.findById(id);
         Ketquadoso ketquadoso = null;
 
         if (optional.isPresent()) {
-           ketquadoso = optional.get();
+            ketquadoso = optional.get();
         } else {
-            throw new RuntimeException("Prize not found for id :: " + id);
+            throw new RuntimeException("Lottery not found for id :: " + id);
         }
+
         return ketquadoso;
+    }
+
+    public Ketquadoso saveChangeLotteryNumber(Ketquadoso ketquadoso) {
+
+        return flameRepository.save(ketquadoso);
     }
 }

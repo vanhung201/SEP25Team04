@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Admin Dashboard - Xổ số Miền Bắc</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -37,7 +35,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
-    <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
+    <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
       <img src="assets/img/logo.png" alt="logo.png">
       <span class="d-none d-lg-block">Flames</span>
     </a>
@@ -123,7 +121,25 @@
     </li><!-- End Lottery Results Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" th:href="@{/prize}">
+      <a class="nav-link collapsed" data-bs-target="#crawler-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-file-arrow-down"></i><span>Crawler</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="crawler-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a th:href="@{/crawldata}">
+            <i class="bi bi-circle"></i><span>Crawl Data</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/crawldetail}">
+            <i class="bi bi-circle"></i><span>Detail Crawl</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Crawler Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" th:href="@{prize}">
         <i class="bi bi-gem"></i>
         <span>Prizes</span>
       </a>
@@ -151,106 +167,40 @@
 
 <main id="main" class="main">
 
-    <div class="pagetitle">
-        <h1>Kết quả Xổ số Miền Bắc</h1>
-    </div><!-- End Page Title -->
+  <div class="pagetitle">
+    <h1>Kết quả Xổ số Miền Bắc</h1>
+  </div><!-- End Page Title -->
 
   <section class="section">
     <div class="row">
       <div class="col">
         <div class="card">
-
+          <script>$('#date').datepicker({ dateFormat: 'dd/mm/yyyy' }).val();</script>
           <div class="card-header">
-            <form >
+            <form action="xosomienbac" method="post">
               <div class="row mb-3">
-                <label for="inputDate" class="col-sm-2 col-form-label">Choose Date:</label>
+                <label  class="col-sm-2 col-form-label">Choose Date:</label>
                 <div class="col-sm-2">
-                  <input id="inputDate" type="date" class="form-control" required>
+                  <input type="date" name="date" required>
+                  <input type="text" name="mien" value="3" hidden>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputCity"  class="col-sm-2 col-form-label">Choose Province/City</label>
+                  <div class="col-sm-3">
+                    <select id="inputCity" class="form-select" aria-label="Default select example" name="tinhthanhpho" value="#ttpid">
+                      <option id="ttpid"name="tinhthanhpho" value="1">Hà Nội</option>
+                      <option name="tinhthanhpho" value="2">Quảng Ninh</option>
+                      <option name="tinhthanhpho" value="3">Bắc Ninh</option>
+                      <option name="tinhthanhpho" value="4">Hải Phòng</option>
+                      <option name="tinhthanhpho" value="5">Nam Định</option>
+                      <option name="tinhthanhpho" value="6">Thái Bình</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <button class="btn btn-success">Show Result</button>
             </form>
           </div>
-
-          <div class="card-body">
-
-            <h4 class="card-title text-center">Kết quả Xổ số Miền Bắc ngày: 04/08/2022</h4>
-
-            <table class="table table-striped table-bordered">
-              <thead>
-              <tr>
-                <th scope="col">Giải</th>
-                <th scope="col">Flames</th>
-                <th scope="col">Minh Ngọc</th>
-                <th scope="col">Đại Phát</th>
-              </tr>
-
-              <tr>
-                <th colspan="4" scope="col">Ký hiệu trúng Đặc Biệt: 7BS-9BS-15BS-3BS-4BS-13BS</th>
-              </tr>
-              </thead>
-
-              <tbody >
-              <tr>
-                <th scope="row">Đặc Biệt</th>
-                <td>37686</td>
-                <td>37686</td>
-                <td>37686</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải nhất</th>
-                <td>60371</td>
-                <td>60371</td>
-                <td>60371</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải nhì</th>
-                <td>33660 &emsp; 43875</td>
-                <td>33660 &emsp; 43875</td>
-                <td>33660 &emsp; 43875</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải ba</th>
-                <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
-                <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
-                <td>55527 &emsp; 82314 &emsp; 77309 &emsp; 06574 &emsp; 24773</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải tư</th>
-                <td>9148 &emsp; 3426 &emsp; 1501</td>
-                <td>9148 &emsp; 3426 &emsp; 1501</td>
-                <td>9148 &emsp; 3426 &emsp; 1501</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải năm</th>
-                <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
-                <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
-                <td>9150 &emsp; 5760 &emsp; 3983 &emsp; 1193 &emsp; 2334</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải sáu</th>
-                <td>686 &emsp; 240 &emsp; 515</td>
-                <td>686 &emsp; 240 &emsp; 515</td>
-                <td>686 &emsp; 240 &emsp; 515</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Giải bảy</th>
-                <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
-                <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
-                <td>18 &emsp; 86 &emsp; 51 &emsp; 46</td>
-              </tr>
-
-              </tbody>
-            </table>
-          </div>
-
         </div>
       </div>
     </div>
@@ -289,4 +239,9 @@
 
 </body>
 
+</html></title>
+</head>
+<body>
+
+</body>
 </html>

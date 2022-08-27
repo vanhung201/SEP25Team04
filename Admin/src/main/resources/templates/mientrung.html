@@ -37,7 +37,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a th:href="@{/xosomienbac}" class="logo d-flex align-items-center">
+        <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="logo.png">
             <span class="d-none d-lg-block">Flames</span>
         </a>
@@ -186,12 +186,14 @@
                     <div class="card-header">
                         <form method="post">
                             <div class="row mb-3">
-                                <label  class="col-sm-2 col-form-label">Choose Date:</label>
-                                <div class="col-sm-2">
-                                    <input type="date" name="date" value="${date}" required>
+                                <label class="col-sm-2 col-form-label">Choose Date:</label>
+                                <div class="col-sm-3">
+                                    <input type="date" name="date" value="${date}" class="form-control" required>
                                     <input type="text" name="mien" value="2" hidden>
                                 </div>
-                                <div class="row mb-3">
+                            </div>
+
+                            <div class="row mb-3">
                                     <label for="inputCity"  class="col-sm-2 col-form-label">Choose Province/City</label>
                                     <div class="col-sm-3">
                                         <select id="inputCity" class="form-select" aria-label="Default select example" name="tinhthanhpho" >
@@ -212,7 +214,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
                             <button formaction="xosomientrung" class="btn btn-success">Show Result</button>
                         </form>
                     </div>
