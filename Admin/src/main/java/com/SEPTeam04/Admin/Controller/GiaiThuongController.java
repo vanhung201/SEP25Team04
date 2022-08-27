@@ -14,6 +14,14 @@ public class GiaiThuongController {
     @Autowired
     private GiaiThuongService giaiThuongService;
 
+    public GiaiThuongController() {
+
+    }
+
+    public GiaiThuongController(GiaiThuongService giaiThuongService) {
+        this.giaiThuongService = giaiThuongService;
+    }
+
     @GetMapping("/prize")
     public String viewListPrize(Model model) {
         model.addAttribute("listPrizes", giaiThuongService.getAllGiaiThuong());
@@ -48,6 +56,22 @@ public class GiaiThuongController {
         model.addAttribute("prize", giaithuong);
 
         return "/edit-prize";
+    }
+
+    @PostMapping("/saveEditPrize/{id}")
+    public String saveEditAdminAccount(@PathVariable (value = "id") Integer id,
+                                       @ModelAttribute("prize") Giaithuong giaithuong, RedirectAttributes attributes) {
+        // get Admin Account from service
+        Giaithuong existingPrize = giaiThuongService.getGiaiThuongById(id);
+
+        existingPrize.setId(id);
+        existingPrize.setTengiaithuong(giaithuong.getTengiaithuong());
+        existingPrize.setSotienthuong(Integer.valueOf(giaithuong.getSotienthuong()));
+
+        giaiThuongService.updateGiaiThuong(existingPrize);
+        attributes.addFlashAttribute("message", "Update prize successfully.");
+
+        return "redirect:/prize";
     }
 
     @GetMapping("/deletePrize/{id}")

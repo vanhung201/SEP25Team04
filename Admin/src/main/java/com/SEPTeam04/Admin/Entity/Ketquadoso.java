@@ -1,7 +1,6 @@
 package com.SEPTeam04.Admin.Entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "KETQUADOSO")
@@ -11,26 +10,23 @@ public class Ketquadoso {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "sotrungthuong", length = 6)
+    @Column(name = "id_mien")
+    private Integer idMien;
+
+    @Column(name = "id_tinhthanhpho")
+    private Integer idTinhthanhpho;
+
+    @Column(name = "sotrungthuong", length = 50)
     private String sotrungthuong;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_mien")
-    private Mien idMien;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_tinhthanhpho")
-    private TinhThanhpho idTinhthanhpho;
+    @Column(name = "id_giaithuong")
+    private Integer idGiaithuong;
 
     @Column(name = "kyhieuve", length = 30)
     private String kyhieuve;
 
-    @Column(name = "thoigianmothuong")
-    private LocalDate thoigianmothuong;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_giaithuong")
-    private Giaithuong idGiaithuong;
+    @Column(name = "ngay", length = 15)
+    private String ngay;
 
     public Integer getId() {
         return id;
@@ -38,6 +34,22 @@ public class Ketquadoso {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getIdMien() {
+        return idMien;
+    }
+
+    public void setIdMien(Integer idMien) {
+        this.idMien = idMien;
+    }
+
+    public Integer getIdTinhthanhpho() {
+        return idTinhthanhpho;
+    }
+
+    public void setIdTinhthanhpho(Integer idTinhthanhpho) {
+        this.idTinhthanhpho = idTinhthanhpho;
     }
 
     public String getSotrungthuong() {
@@ -48,20 +60,12 @@ public class Ketquadoso {
         this.sotrungthuong = sotrungthuong;
     }
 
-    public Mien getIdMien() {
-        return idMien;
+    public Integer getIdGiaithuong() {
+        return idGiaithuong;
     }
 
-    public void setIdMien(Mien idMien) {
-        this.idMien = idMien;
-    }
-
-    public TinhThanhpho getIdTinhthanhpho() {
-        return idTinhthanhpho;
-    }
-
-    public void setIdTinhthanhpho(TinhThanhpho idTinhthanhpho) {
-        this.idTinhthanhpho = idTinhthanhpho;
+    public void setIdGiaithuong(Integer idGiaithuong) {
+        this.idGiaithuong = idGiaithuong;
     }
 
     public String getKyhieuve() {
@@ -72,20 +76,12 @@ public class Ketquadoso {
         this.kyhieuve = kyhieuve;
     }
 
-    public LocalDate getThoigianmothuong() {
-        return thoigianmothuong;
+    public String getNgay() {
+        return ngay;
     }
 
-    public void setThoigianmothuong(LocalDate thoigianmothuong) {
-        this.thoigianmothuong = thoigianmothuong;
-    }
-
-    public Giaithuong getIdGiaithuong() {
-        return idGiaithuong;
-    }
-
-    public void setIdGiaithuong(Giaithuong idGiaithuong) {
-        this.idGiaithuong = idGiaithuong;
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
     }
 
 }

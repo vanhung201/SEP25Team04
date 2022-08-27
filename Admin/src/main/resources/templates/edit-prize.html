@@ -64,7 +64,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Flames Admin</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">[[${#request.userPrincipal.principal.getFullName}]]</span>
           </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -185,9 +185,7 @@
             <div class="card-body">
               <h5 class="card"></h5>
 
-              <form class="row g-3 needs-validation" action="#" th:action="@{/savePrize}" method="POST" th:object="${prize}" novalidate>
-
-                <input type="hidden" th:field="*{id}">
+              <form class="row g-3 needs-validation" action="#" th:action="@{/saveEditPrize/{id} (id=${prize.id})}" method="POST" th:object="${prize}" novalidate>
 
                 <div class="col-md-12">
                   <label for="validationPrizeName" class="form-label">Prize Name</label>
@@ -199,7 +197,7 @@
 
                 <div class="col-md-12">
                   <label for="validationPrizeValue" class="form-label">Prize Value</label>
-                  <input th:field="*{sotienthuong}" type="text" class="form-control" id="validationPrizeValue" placeholder="Prize Value" required>
+                  <input th:field="*{sotienthuong}" type="number" class="form-control" id="validationPrizeValue" placeholder="Prize Value" required>
                   <div class="invalid-feedback">
                     Please provide Prize Value!
                   </div>
@@ -208,7 +206,7 @@
                 <div>
                   <button type="submit" class="btn btn-primary">Save changes</button>
                   &nbsp;
-                  <button type="button" class="btn btn-secondary">Cancel</button>
+                  <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
                 </div>
 
               </form><!-- End Custom Styled Validation -->
@@ -217,6 +215,12 @@
         </div>
       </div>
     </section>
+
+    <script type="text/javascript">
+      function cancelForm() {
+        window.location = "/prize";
+      }
+    </script>
 
   </main><!-- End #main -->
 

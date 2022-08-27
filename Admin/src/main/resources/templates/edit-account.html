@@ -64,7 +64,7 @@
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
           <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2">Flames Admin</span>
+          <span class="d-none d-md-block dropdown-toggle ps-2">[[${#request.userPrincipal.principal.getFullName}]]</span>
         </a><!-- End Profile Image Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -185,12 +185,11 @@
           <h5 class="card"></h5>
           <div class="card-body">
 
-            <form class="row g-3 needs-validation" action="#" th:action="@{/saveAccount}" method="POST" th:object="${account}" novalidate>
-
-              <input type="hidden" th:field="*{id}">
+            <form class="row g-3 needs-validation" action="#" th:action="@{/saveEditAccount/{id} (id=${account.id})}" method="POST" th:object="${account}" novalidate>
 
               <div class="col-md-12">
-                <label for="validationCustomUsername" class="form-label">Username</label>
+                <label for="validationCustomUsername" class="form-label">Username <i style="color: red">(This field cannot be change.)</i></label>
+
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend">@</span>
                   <input th:field="*{username}" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Your Username" readonly>
@@ -199,14 +198,6 @@
                   </div>
                 </div>
               </div>
-
-              <!--<div class="col-md-12">
-                <label for="validationPass" class="form-label">Password</label>
-                <input th:field="*{password}" type="password" class="form-control" id="validationPass" placeholder="Your Password" readonly>
-                <div class="invalid-feedback">
-                  Please choose a Password!
-                </div>
-              </div>-->
 
               <div class="col-md-12">
                 <label for="validationFullName" class="form-label">Full Name</label>
