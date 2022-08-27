@@ -40,7 +40,7 @@ public class MienBacController {
         model.addAttribute("listDP", daiPhatService.daiPhatResult(String.valueOf(date), 1, tinhthanhpho));
         model.addAttribute("listPrizes", giaiThuongService.getAllGiaiThuong());
         model.addAttribute("listFlame", flameService.flameminhNgocResult(date, 1, tinhthanhpho));
-        Mien getmien = mienService.get(3);
+        Mien getmien = mienService.get(1);
         model.addAttribute("mien", getmien);
         model.addAttribute("date", date);
         TinhThanhpho gettinhthanhpho = tinhThanhphoService.get(tinhthanhpho);
