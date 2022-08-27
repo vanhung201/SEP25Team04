@@ -17,7 +17,6 @@ public class TinhThanhphoService {
     public List<TinhThanhpho> getAllTinhThanhpho() {
 
         return tinhThanhPhoRepository.findAll();
-
     }
 
     public TinhThanhpho get(Integer id) {

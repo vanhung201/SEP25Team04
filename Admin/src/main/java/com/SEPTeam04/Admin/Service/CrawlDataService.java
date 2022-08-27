@@ -2,7 +2,6 @@ package com.SEPTeam04.Admin.Service;
 
 import com.SEPTeam04.Admin.Entity.*;
 import com.SEPTeam04.Admin.Repository.DaiPhatRepository;
-import com.SEPTeam04.Admin.Repository.GiaiThuongRepository;
 import com.SEPTeam04.Admin.Repository.MinhNgocRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -92,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .usernameParameter("username")
                     .passwordParameter("password")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/xosomienbac")
+                .defaultSuccessUrl("/mienbac")
                 .and()
                 .rememberMe().tokenRepository(persistentTokenRepository())
                 .and()

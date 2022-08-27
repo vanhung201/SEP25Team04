@@ -1,10 +1,7 @@
 package com.SEPTeam04.Admin.Service;
 
-import com.SEPTeam04.Admin.Entity.Giaithuong;
-import com.SEPTeam04.Admin.Entity.KetquaMinhngoc;
 import com.SEPTeam04.Admin.Entity.Ketquadoso;
 import com.SEPTeam04.Admin.Repository.FlameRepository;
-import com.SEPTeam04.Admin.Repository.MinhNgocGetRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

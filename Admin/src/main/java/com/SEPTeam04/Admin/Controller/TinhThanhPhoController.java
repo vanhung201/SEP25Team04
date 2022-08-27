@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TinhThanhPhoController {
-
     @Autowired
     private TinhThanhphoService tinhThanhphoService;
     @Autowired
@@ -28,23 +27,17 @@ public class TinhThanhPhoController {
 
     @PostMapping("getttpadate")
     public String viewListOfMienBac(Model model, @RequestParam("date") @DateTimeFormat(pattern = "dd-MM-yyyy") String date, @RequestParam("mien") Integer mien, @RequestParam("tinhthanhpho") Integer tinhthanhpho) {
-
         model.addAttribute("listTTP", tinhThanhphoService.getAllTinhThanhpho());
         minhNgocService.minhNgocResult(String.valueOf(date), mien, tinhthanhpho);
-
         model.addAttribute("listMN", minhNgocService.minhNgocResult(String.valueOf(date), mien, tinhthanhpho));
-
         daiPhatService.daiPhatResult(String.valueOf(date), mien, tinhthanhpho);
         model.addAttribute("listDP", daiPhatService.daiPhatResult(String.valueOf(date), mien, tinhthanhpho));
-
         model.addAttribute("listPrizes", giaiThuongService.getAllGiaiThuong());
-
         return "xosotinhthanhpho";
     }
 
     @GetMapping("/xosotinhthanhpho")
     public String showCrawlurlDP() {
-
         return "xosotinhthanhpho";
     }
 }

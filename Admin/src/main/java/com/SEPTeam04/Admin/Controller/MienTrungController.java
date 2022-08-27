@@ -1,6 +1,5 @@
 package com.SEPTeam04.Admin.Controller;
 
-import com.SEPTeam04.Admin.Entity.AdminAccount;
 import com.SEPTeam04.Admin.Entity.Ketquadoso;
 import com.SEPTeam04.Admin.Entity.Mien;
 import com.SEPTeam04.Admin.Entity.TinhThanhpho;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MienTrungController {
-
     @Autowired
     private MinhNgocService minhNgocService;
 
@@ -39,22 +37,16 @@ public class MienTrungController {
 
     @PostMapping("xosomientrung")
     public String viewListOfMienNam(Model model, @RequestParam("date") @DateTimeFormat(pattern = "dd-MM-yyyy") String date, @RequestParam("mien") Integer mien, @RequestParam("tinhthanhpho") Integer tinhthanhpho) {
-
         var ketquadosoList = minhNgocGetRepository.findAllByNgayAndIdMienAndIdTinhthanhphoOrderByIdGiaithuongAsc(date, mien, tinhthanhpho);
         minhNgocService.minhNgocResult(String.valueOf(date), mien, tinhthanhpho);
         model.addAttribute("listMN", minhNgocService.minhNgocResult(String.valueOf(date), 2, tinhthanhpho));
-
         daiPhatService.daiPhatResult(String.valueOf(date), mien, tinhthanhpho);
         model.addAttribute("listDP", daiPhatService.daiPhatResult(String.valueOf(date), 2, tinhthanhpho));
-
         model.addAttribute("listPrizes", giaiThuongService.getAllGiaiThuong());
-
         model.addAttribute("listFlame", flameService.flameminhNgocResult(date, 2, tinhthanhpho));
-
         Mien getmien = mienService.get(2);
         model.addAttribute("mien", getmien);
         model.addAttribute("date", date);
-
         TinhThanhpho gettinhthanhpho = tinhThanhphoService.get(tinhthanhpho);
         model.addAttribute("getttp", gettinhthanhpho);
 
@@ -83,7 +75,7 @@ public class MienTrungController {
     }
 
     @PostMapping("/saveEditLotteryNumber/{id}")
-    public String saveEditAdminAccount(@PathVariable (value = "id") Integer id,
+    public String saveEditAdminAccount(@PathVariable(value = "id") Integer id,
                                        @ModelAttribute("lotteryNumber") Ketquadoso ketquadoso, RedirectAttributes attributes) {
         // get Lottery Number from service
         Ketquadoso existingLotteryNumber = flameService.getKetquaId(id);
@@ -100,6 +92,6 @@ public class MienTrungController {
         flameService.saveChangeLotteryNumber(ketquadoso);
         attributes.addFlashAttribute("message", "Update Lottery Number successfully.");
 
-        return "redirect:/xosomientrung";
+        return "redirect:/mientrung";
     }
 }
