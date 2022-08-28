@@ -1,0 +1,22 @@
+package com.SEPTeam04.User.Service;
+
+import com.SEPTeam04.User.Entity.Giaithuong;
+
+import java.util.List;
+
+public interface GiaiThuongService {
+    // function get all prize
+    List<Giaithuong> getAllGiaiThuong();
+
+    // function add new prize
+    void saveGiaiThuong(Giaithuong giaithuong);
+
+    // function get prize by id
+    Giaithuong getGiaiThuongById(Integer id);
+
+    // function update prize
+    Giaithuong updateGiaiThuong(Giaithuong giaithuong);
+
+    // function delete prize
+    void deleteGiaiThuongById(Integer id);
+}
