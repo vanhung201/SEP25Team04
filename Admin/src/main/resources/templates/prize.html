@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http:/www.thymeleaf.org">
-
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Admin Dashboard - Prize</title>
+  <title>Giải Thưởng</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -15,7 +13,8 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,144 +27,106 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  
+
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-      <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="logo.png">
-        <span class="d-none d-lg-block">Flames</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+  <div class="d-flex align-items-center justify-content-between">
+    <a th:href="@{/mienbac}" class="logo d-flex align-items-center">
+      <img src="assets/img/logo.png" alt="logo.png">
+      <span class="d-none d-lg-block">Flames</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
 
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
 
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">[[${#request.userPrincipal.principal.getFullName}]]</span>
-          </a><!-- End Profile Image Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li>
-              <a class="dropdown-item d-flex align-items-center" th:href="@{/change-password}">
-                <i class="bi bi-gear"></i>
-                <span>Change Password</span>
-              </a>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#lottery-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Lottery Results</span><i class="bi bi-chevron-down ms-auto"></i>
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <i class="bi bi-search"></i>
         </a>
-        <ul id="lottery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a th:href="@{/mienbac}">
-              <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/mientrung}">
-              <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/miennam}">
-              <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Lottery Results Nav -->
+      </li><!-- End Search Icon-->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#crawler-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-file-arrow-down"></i><span>Crawler</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="crawler-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a th:href="@{/crawldata}">
-              <i class="bi bi-circle"></i><span>Crawl Data</span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/crawldetail}">
-              <i class="bi bi-circle"></i><span>Detail Crawl</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Crawler Nav -->
+      <li class="nav-item dropdown pe-3">
 
-      <li class="nav-item">
-        <a class="nav-link " th:href="@{/prize}">
-          <i class="bi bi-gem"></i>
-          <span>Prizes</span>
-        </a>
-      </li><!-- End Prizes Nav -->
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2">[[${#request.userPrincipal.principal.getFullName}]]</span>
+        </a><!-- End Profile Image Icon -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person"></i><span>Account</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li>
-            <a th:href="@{/account}">
-              <i class="bi bi-circle"></i><span>Account List</span>
+            <a class="dropdown-item d-flex align-items-center" th:href="@{/change-password}">
+              <i class="bi bi-gear"></i>
+              <span>Change Password</span>
             </a>
           </li>
+
           <li>
-            <a th:href="@{/change-password}">
-              <i class="bi bi-circle"></i><span>Change Password</span>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" th:href="@{/logout}">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
             </a>
           </li>
-        </ul>
-      </li><!-- End Accounts Nav -->
+
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
+
     </ul>
-  </aside><!-- End Sidebar-->
+  </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link " data-bs-target="#lottery-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Lottery Results</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="lottery-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        <li>
+          <a th:href="@{/mienbac}" class="active">
+            <i class="bi bi-circle"></i><span>Xổ số Miền Bắc</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/mientrung}">
+            <i class="bi bi-circle"></i><span>Xổ số Miền Trung</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/miennam}">
+            <i class="bi bi-circle"></i><span>Xổ số Miền Nam</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Lottery Results Nav -->
+
+
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" th:href="@{prize}">
+        <i class="bi bi-gem"></i>
+        <span>Prizes</span>
+      </a>
+    </li><!-- End Prizes Nav -->
+
+  </ul>
+</aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 
@@ -184,9 +145,7 @@
         <div class="col">
           <div class="card">
 
-            <div class="card-header">
-              <a class="btn btn-success" th:href="@{addPrize}">Add New</a>
-            </div>
+
 
             <div class="card-body">
 
@@ -197,7 +156,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Prize Name</th>
                     <th scope="col">Prize Value</th>
-                    <th scope="col">Action</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -205,17 +164,7 @@
                     <th scope="row" th:text="${prize.id}" />
                     <td th:text="${prize.tengiaithuong}" />
                     <td th:text="${prize.sotienthuong}" />
-                    <td>
-                        <a type="button" class="btn btn-warning btn-sm"
-                           data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                           th:href="@{/editPrize/{id}(id=${prize.id})}"><i class="bi bi-pencil-square"></i></a>
-                        &nbsp;
-                        <a type="button" class="btn btn-danger btn-sm"
-                           data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"
-                           th:data-id="${prize.id}"
-                           th:data-prize_name="${prize.tengiaithuong}"
-                           onclick="showConfirmDelete(this.getAttribute('data-id'), this.getAttribute('data-prize_name'))"><i class="bi bi bi-x-circle"></i></a>
-                    </td>
+
                   </tr>
                 </tbody>
               </table>
@@ -226,32 +175,8 @@
       </div>
     </section>
 
-    <script>
-      function showConfirmDelete(id, prize_name) {
-        $('#prize-name').text(prize_name);
-        $('#yesOption').attr('href', '/deletePrize/' + id);
-        $('#confirmDeleteModal').modal('show');
-      }
-    </script>
 
-    <!-- Basic Modal -->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Delete Confirmation</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Are you sure to delete prize "<span id="prize-name" style="color: red"></span>"?
-          </div>
-          <div class="modal-footer">
-            <a id="yesOption" type="button" class="btn btn-danger">Yes</a>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          </div>
-        </div>
-      </div>
-    </div><!-- End Basic Modal-->
+
 
   </main><!-- End #main -->
 
